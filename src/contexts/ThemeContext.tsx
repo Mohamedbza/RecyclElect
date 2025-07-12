@@ -27,7 +27,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   // Always use light theme
   const [theme, setThemeState] = useState<Theme>('light');
 
-  const setTheme = (newTheme: Theme) => {
+  const setTheme = (_newTheme: Theme) => {
     // Force light theme only
     setThemeState('light');
     localStorage.setItem('theme', 'light');
