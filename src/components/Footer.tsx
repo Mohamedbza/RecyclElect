@@ -7,9 +7,6 @@ import {
   Phone, 
   MapPin, 
   Heart, 
-  ShieldCheck, 
-  Truck, 
-  RotateCcw,
   Facebook,
   Instagram,
   Twitter,
@@ -38,12 +35,6 @@ export const Footer = () => {
     { name: "Ordinateurs portables", href: "/j-achete" },
     { name: "Pièces détachées", href: "/j-achete" },
     { name: "Réparations", href: "/nous-contacter" }
-  ];
-
-  const policies = [
-    { icon: RotateCcw, title: "Retours faciles", description: companyInfo.policies.returns },
-    { icon: ShieldCheck, title: "Garantie étendue", description: companyInfo.policies.warranty },
-    { icon: Truck, title: "Livraison", description: companyInfo.policies.shipping }
   ];
 
   return (
