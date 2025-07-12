@@ -3,20 +3,15 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { navigationItems } from '../data/mockData';
 import { assets } from '../config/assets';
-import { ThemeToggle } from './shared/ThemeToggle';
-import { useTheme } from '../contexts/ThemeContext';
 import {
   Menu,
-  X,
-  Search,
-  User
+  X
 } from 'lucide-react';
 
 export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
-  const { theme } = useTheme();
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -28,6 +23,27 @@ export const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
+
+  // Prevent scrolling when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
+
+  const handleMobileMenuToggle = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
   const linkVariants = {
     initial: { y: 0 },
@@ -51,7 +67,7 @@ export const Header = () => {
           : ''
       }`}
       style={{
-        borderColor: theme === 'light' ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.1)'
+        borderColor: 'rgba(0, 0, 0, 0.1)'
       }}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -116,26 +132,13 @@ export const Header = () => {
             ))}
           </nav>
 
-          {/* Action Buttons */}
-          <div className="hidden lg:flex items-center space-x-3">
-            <ThemeToggle />
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="p-3 text-white hover:text-emerald-500 hover:bg-white/10 transition-colors duration-200 rounded-xl group"
-            >
-              <Search className="w-5 h-5 group-hover:scale-110 transition-transform" />
-            </motion.button>
-
-             
-          </div>
-
           {/* Mobile menu button */}
-          <div className="lg:hidden">
+          <div className="lg:hidden relative z-[10000]">
             <motion.button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-3 text-white hover:text-purple-500 hover:bg-white/10 focus:outline-none rounded-xl transition-colors duration-200"
+              onClick={handleMobileMenuToggle}
+              className="p-3 text-white hover:text-purple-500 hover:bg-white/10 focus:outline-none rounded-xl transition-colors duration-200 bg-black/20 backdrop-blur-sm border border-white/10"
               whileTap={{ scale: 0.95 }}
+              aria-label="Toggle mobile menu"
             >
               <AnimatePresence mode="wait">
                 {isMobileMenuOpen ? (
@@ -167,64 +170,63 @@ export const Header = () => {
         {/* Mobile Navigation */}
         <AnimatePresence>
           {isMobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="lg:hidden overflow-hidden"
-            >
-              <div className="glass rounded-3xl mx-4 mb-4 p-6 border"
-                style={{
-                  borderColor: theme === 'light' ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.1)'
-                }}>
-                <div className="space-y-3">
-                  {navigationItems.map((item, index) => (
-                    <motion.div
-                      key={item.path}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                    >
-                      <Link
-                        to={item.path}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className={`block px-6 py-4 rounded-xl text-base font-bold transition-all duration-200 ${
-                          isActive(item.path)
-                            ? `text-white bg-accent/20`
-                            : `text-white hover:text-white hover:bg-white/10`
-                        }`}
-                      >
-                        {item.label}
-                      </Link>
-                    </motion.div>
-                  ))}
-                </div>
-                
-                <div className="mt-6 pt-6 border-t"
+            <>
+              {/* Backdrop */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="fixed inset-0 bg-black/30 backdrop-blur-md z-[9997] lg:hidden"
+                onClick={() => setIsMobileMenuOpen(false)}
+              />
+              
+              {/* Mobile Menu */}
+              <motion.div
+                initial={{ opacity: 0, height: 0, y: -20 }}
+                animate={{ opacity: 1, height: "auto", y: 0 }}
+                exit={{ opacity: 0, height: 0, y: -20 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                className="lg:hidden overflow-hidden relative z-[9998] w-full flex justify-center"
+              >
+                <div 
+                  className="mx-4 mb-4 p-8 border rounded-3xl relative max-w-sm w-full"
                   style={{
-                    borderColor: theme === 'light' ? 'rgba(0, 0, 0, 0.2)' : 'rgba(255, 255, 255, 0.2)'
-                  }}>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-3">
-                      <ThemeToggle />
-                      <button className="p-3 text-white hover:text-emerald-500 hover:bg-white/10 transition-colors duration-200 rounded-xl">
-                        <Search className="w-5 h-5" />
-                      </button>
-                    </div>
-                    <button className="bg-gradient-to-r from-accent to-cyan-400 px-6 py-3 text-white font-bold rounded-full text-sm shadow-lg shadow-accent/30 flex items-center justify-center">
-                      <User className="w-4 h-4 mr-2" />
-                      Connexion
-                    </button>
+                    background: 'rgba(255, 255, 255, 0.05)',
+                    backdropFilter: 'blur(25px)',
+                    borderColor: 'rgba(255, 255, 255, 0.1)',
+                    boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+                  }}
+                >
+                  <div className="space-y-4 flex flex-col items-center">
+                    {navigationItems.map((item, index) => (
+                      <motion.div
+                        key={item.path}
+                        initial={{ opacity: 0, x: -30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1, duration: 0.4 }}
+                        className="w-full max-w-xs"
+                      >
+                        <Link
+                          to={item.path}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className={`block px-8 py-5 rounded-2xl text-lg font-bold transition-all duration-300 text-center ${
+                            isActive(item.path)
+                              ? `text-white bg-gradient-to-r from-accent/30 to-cyan-400/30 shadow-lg shadow-accent/20 border border-accent/20`
+                              : `text-white/90 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10`
+                          }`}
+                        >
+                          {item.label}
+                        </Link>
+                      </motion.div>
+                    ))}
                   </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </>
           )}
         </AnimatePresence>
       </div>
-
-
     </motion.header>
   );
 }; 
