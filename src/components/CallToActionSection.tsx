@@ -13,7 +13,7 @@ export const CallToActionSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
+            <h2 className="text-4xl md:text-5xl font-display font-bold mb-4 text-white">
               Prêt à rejoindre la révolution tech ?
             </h2>
             <p className="text-lg md:text-xl text-white max-w-2xl mx-auto mb-8">

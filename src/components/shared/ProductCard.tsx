@@ -186,7 +186,7 @@ export const ProductCard = ({
             <Info className="w-4 h-4 inline mr-1" />
             Spécifications
           </h4>
-          {product.specifications.slice(0, 3).map((spec, index) => (
+          {product.specifications.map((spec, index) => (
             <div key={index} className={`flex items-center text-xs ${
               theme === 'light' ? 'text-black/70' : 'text-white/70'
             }`}>
@@ -195,13 +195,6 @@ export const ProductCard = ({
               <span className="ml-1 truncate">{spec.value}</span>
             </div>
           ))}
-          {product.specifications.length > 3 && (
-            <p className={`text-xs italic ${
-              theme === 'light' ? 'text-black/50' : 'text-white/50'
-            }`}>
-              +{product.specifications.length - 3} autres spécifications...
-            </p>
-          )}
         </div>
       )}
 

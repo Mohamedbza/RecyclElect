@@ -64,7 +64,7 @@ const thirdColumn = testimonials.slice(6, 9);
 
 export const TestimonialsSection = () => {
   return (
-    <section className="bg-neutral-950 py-24 my-20 relative">
+    <section className="bg-white py-24 my-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -74,12 +74,12 @@ export const TestimonialsSection = () => {
           className="flex flex-col items-center justify-center max-w-[540px] mx-auto"
         >
           <div className="flex justify-center">
-            <div className="border border-primary-400 py-1 px-4 rounded-lg text-primary-400 bg-neutral-900/60">Témoignages</div>
+            <div className="border border-blue-500 py-1 px-4 rounded-lg text-blue-600 bg-blue-50">Témoignages</div>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter mt-5 text-white">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter mt-5 text-gray-900">
             Ce que nos <span className="text-gradient font-neon">clients disent</span>
           </h2>
-          <p className="text-center mt-5 opacity-75 text-white/80">
+          <p className="text-center mt-5 text-gray-600">
             Découvrez les avis de nos clients satisfaits.
           </p>
         </motion.div>
