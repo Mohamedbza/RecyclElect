@@ -444,7 +444,7 @@ export const ContactPage = () => {
                     </div>
                     <div>
                       <p className="font-bold text-gray-900 dark:text-white">Email</p>
-                      <p className="text-gray-600 dark:text-white/70">contact@recyclelect.ca</p>
+                      <p className="text-gray-600 dark:text-white/70">contact@itech.ca</p>
                     </div>
                   </div>
                   

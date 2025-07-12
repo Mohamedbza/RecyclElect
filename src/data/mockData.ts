@@ -6,7 +6,7 @@ export const companyInfo: CompanyInfo & { videoUrl?: string; videoPoster?: strin
   description: "Spécialiste en matériels électroniques d'occasion, nous donnons une seconde vie aux ordinateurs portables et leurs pièces. Notre mission est de promouvoir la durabilité tout en offrant des solutions économiques et écologiques.",
   address: "123 Rue de l'Innovation, Montréal, QC H2X 1L1",
   phone: "+1 (514) 555-0123",
-  email: "contact@recyclect.ca",
+  email: "contact@itech.ca",
   policies: {
     returns: "30 jours pour retourner un produit défectueux",
     warranty: "6 mois de garantie sur tous nos produits",

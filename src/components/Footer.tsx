@@ -219,7 +219,7 @@ export const Footer = () => {
         <div className="py-8 border-t border-white/10">
           <div className="flex flex-col lg:flex-row items-center justify-between space-y-4 lg:space-y-0">
             <div className="flex items-center space-x-6 text-sm text-white/60">
-              <p>© {currentYear} RecyclElect. Tous droits réservés.</p>
+              <p>© {currentYear} iTech. Tous droits réservés.</p>
               <span className="hidden lg:block">|</span>
               <div className="flex items-center space-x-4">
                 <a href="#" className="hover:text-white transition-colors">
