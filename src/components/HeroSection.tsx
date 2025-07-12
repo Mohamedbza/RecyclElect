@@ -54,7 +54,7 @@ export const HeroSection = () => {
             transition={{ delay: 0.2 }}
             className="inline-flex items-center space-x-2  bg-white rounded-full px-6 py-3 border border-white/10 bg-w"
           >
-            <span className="font-medium ">N°1 du Reconditionnement au Canada</span>
+            <span className="font-medium text-black ">N°1 du Reconditionnement au Canada</span>
           </motion.div>
 
           {/* Main title */}
