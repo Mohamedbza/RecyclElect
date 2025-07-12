@@ -21,9 +21,9 @@ export const HeroSection = () => {
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
   return (
-    <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-neutral-900">
+    <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
       {/* Animated background */}
-      <div className="absolute inset-0 bg-cyber opacity-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-green-50 opacity-30"></div>
       
       {/* Floating elements */}
       <motion.div 
@@ -52,14 +52,14 @@ export const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="inline-flex items-center space-x-2  bg-white rounded-full px-6 py-3 border border-white/10 bg-w"
+            className="inline-flex items-center space-x-2 bg-primary-500 rounded-full px-6 py-3 border border-primary-200"
           >
-            <span className="font-medium text-black ">N°1 du Reconditionnement au Canada</span>
+            <span className="font-medium text-white">N°1 du Reconditionnement au Canada</span>
           </motion.div>
 
           {/* Main title */}
           <motion.h1 
-            className="text-5xl md:text-7xl font-display font-bold leading-tight text-white"
+            className="text-5xl md:text-7xl font-display font-bold leading-tight text-neutral-900"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
@@ -73,7 +73,7 @@ export const HeroSection = () => {
 
           {/* Subtitle */}
           <motion.p 
-            className="text-xl md:text-2xl text-white max-w-3xl mx-auto leading-relaxed"
+            className="text-xl md:text-2xl text-neutral-700 max-w-3xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
@@ -101,7 +101,7 @@ export const HeroSection = () => {
 
           {/* Trust indicators */}
           <motion.div
-            className="flex flex-wrap items-center justify-center gap-8 mt-16 text-white"
+            className="flex flex-wrap items-center justify-center gap-8 mt-16 text-neutral-700"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1 }}
@@ -127,8 +127,8 @@ export const HeroSection = () => {
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
-        <div className="w-6 h-10 border-2 border-white/20 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white/20 rounded-full mt-2" />
+        <div className="w-6 h-10 border-2 border-neutral-400 rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-neutral-400 rounded-full mt-2" />
         </div>
       </motion.div>
     </section>

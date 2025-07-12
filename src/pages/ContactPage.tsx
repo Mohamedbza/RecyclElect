@@ -182,35 +182,35 @@ export const ContactPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 text-white">
+    <div className="min-h-screen bg-white text-neutral-900">
       {/* Hero Section */}
-      <section className="relative py-32 bg-gradient-to-r from-primary-600/20 via-secondary-600/20 to-purple-600/20 backdrop-blur-sm">
-        <div className="absolute inset-0 bg-cyber opacity-30" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-neutral-900/10 to-neutral-900/30" />
+      <section className="relative py-32 bg-white">
+        <div className="absolute inset-0   opacity-5" />
+        <div className="absolute inset-0 " />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-center pt-8"
           >
-            <div className="inline-flex items-center space-x-2 bg-white/80 dark:bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 mb-8 border border-gray-200 dark:border-white/20">
-              <HeadphonesIcon className="w-5 h-5 text-blue-600 dark:text-primary-400" />
-              <span className="font-medium text-gray-900 dark:text-white">Support & Contact</span>
+            <div className="inline-flex items-center space-x-2 bg-primary-500 rounded-full px-6 py-3 mb-8 border border-primary-200">
+              <HeadphonesIcon className="w-5 h-5 text-white" />
+              <span className="font-medium text-white">Support & Contact</span>
             </div>
-            <h1 className="text-5xl md:text-6xl font-display font-bold mb-6 text-white">
+            <h1 className="text-5xl md:text-6xl font-display font-bold mb-6 text-neutral-900">
               Nous <span className="text-gradient">Contacter</span>
             </h1>
-            <p className="text-xl text-white max-w-3xl mx-auto">
+            <p className="text-xl text-neutral-700 max-w-3xl mx-auto">
               Une question, une réclamation ou besoin d'assistance ?  
             </p>
-            <p className="text-xl text-white max-w-3xl mx-auto"> 
+            <p className="text-xl text-neutral-700 max-w-3xl mx-auto"> 
             Notre équipe est là pour vous accompagner</p>
           </motion.div>
         </div>
       </section>
 
       {/* Contact Form & Info */}
-      <section className="py-20 relative bg-white">
+      <section className="py-20 relative bg-neutral-50">
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
@@ -219,11 +219,11 @@ export const ContactPage = () => {
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="bg-white dark:glass-dark p-8 rounded-3xl border border-gray-200 dark:border-white/10 shadow-lg dark:shadow-none"
+              className="bg-white p-8 rounded-3xl border border-neutral-200 shadow-lg"
             >
               <div className="flex items-center mb-8">
-                <MessageSquare className="w-6 h-6 text-blue-600 dark:text-primary-400 mr-3" />
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Envoyer un message</h2>
+                <MessageSquare className="w-6 h-6 text-primary-500 mr-3" />
+                <h2 className="text-2xl font-bold text-neutral-900">Envoyer un message</h2>
               </div>
 
               <AnimatePresence>
@@ -232,13 +232,13 @@ export const ContactPage = () => {
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
-                    className="bg-green-50 dark:bg-green-500/20 border border-green-200 dark:border-green-500/30 rounded-2xl p-4 mb-6"
+                    className="bg-green-50 border border-green-200 rounded-2xl p-4 mb-6"
                   >
                     <div className="flex items-center">
-                      <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400 mr-3" />
+                      <CheckCircle className="w-5 h-5 text-green-600 mr-3" />
                       <div>
-                        <p className="font-bold text-green-800 dark:text-green-400">Message envoyé !</p>
-                        <p className="text-sm text-green-600 dark:text-green-300">Nous vous répondrons dans les 24h</p>
+                        <p className="font-bold text-green-800">Message envoyé !</p>
+                        <p className="text-sm text-green-600">Nous vous répondrons dans les 24h</p>
                       </div>
                     </div>
                   </motion.div>
@@ -524,7 +524,7 @@ export const ContactPage = () => {
       </section>
 
       {/* Policies Section */}
-      <section className="py-20 bg-gradient-to-r from-gray-50 via-blue-50 to-gray-50 dark:from-neutral-900/80 dark:via-primary-900/10 dark:to-neutral-900/80">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -588,7 +588,7 @@ export const ContactPage = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-gradient-to-r from-primary-600/20 via-secondary-600/20 to-purple-600/20 backdrop-blur-sm">
+      <section className="py-20 bg-white backdrop-blur-sm">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -596,10 +596,10 @@ export const ContactPage = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-display font-bold mb-4 text-white">
+            <h2 className="text-4xl font-display font-bold mb-4 text-black">
               Questions <span className="text-gradient">Fréquentes</span>
             </h2>
-            <p className="text-white">Les réponses aux questions les plus courantes</p>
+            <p className="text-gray-600">Les réponses aux questions les plus courantes</p>
           </motion.div>
 
           <div className="space-y-4">
@@ -635,9 +635,73 @@ export const ContactPage = () => {
                     <p className="text-gray-700 dark:text-white/80">{faq.answer}</p>
                   </div>
                 </details>
+                
               </motion.div>
             ))}
           </div>
+          {/* Policies Section */}
+        <div className="py-16 border-t border-neutral-200">
+          <div className="text-center mb-12">
+            <motion.h3 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-3xl font-bold text-neutral-900 mb-4"
+            >
+              Nos Garanties
+            </motion.h3>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              viewport={{ once: true }}
+              className="text-neutral-600 max-w-2xl mx-auto"
+            >
+              Nous nous engageons à vous offrir une expérience d'achat exceptionnelle avec nos garanties exclusives
+            </motion.p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {policies.map((policy, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.15 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="group relative bg-gradient-to-br from-white to-neutral-50 p-8 rounded-3xl transition-all duration-500 border border-neutral-200 hover:border-primary-300 hover:shadow-2xl hover:shadow-primary-500/10"
+              >
+                {/* Background decoration */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-secondary-500/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                <div className="relative">
+                  {/* Icon Container */}
+                  <div className="mb-6">
+                    <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:shadow-primary-500/25 transition-all duration-500 group-hover:scale-110">
+                      <policy.icon className="w-8 h-8 text-white" />
+                    </div>
+                  </div>
+                  
+                  {/* Content */}
+                  <div>
+                    <h5 className="text-xl font-bold text-neutral-900 mb-3 group-hover:text-primary-600 transition-colors duration-300">
+                      {policy.title}
+                    </h5>
+                    <p className="text-neutral-600 leading-relaxed text-base">
+                      {policy.description}
+                    </p>
+                  </div>
+                  
+                  {/* Hover effect indicator */}
+                  <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
+                    <div className="w-2 h-2 bg-primary-500 rounded-full" />
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
         </div>
       </section>
     </div>

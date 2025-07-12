@@ -47,11 +47,9 @@ export const Footer = () => {
   ];
 
   return (
-    <footer className="relative bg-neutral-900 text-white overflow-hidden">
+    <footer className="relative bg-white text-neutral-900 overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute inset-0 bg-cyber opacity-5" />
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-secondary-500/5 rounded-full blur-3xl" />
+      <div className="absolute inset-0 bg-neutral-50 opacity-5" />
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -75,7 +73,7 @@ export const Footer = () => {
                   />
                 </div>
                 
-                <p className="text-white/70 mb-6 leading-relaxed">
+                <p className="text-neutral-600 mb-6 leading-relaxed">
               {companyInfo.description}
             </p>
                 
@@ -85,7 +83,7 @@ export const Footer = () => {
                     <motion.a
                       key={index}
                       href={social.href}
-                      className={`w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-white/60 ${social.color} transition-all duration-300 hover:bg-white/20 hover:scale-110`}
+                      className={`w-12 h-12 bg-neutral-100 rounded-xl flex items-center justify-center text-neutral-600 ${social.color} transition-all duration-300 hover:bg-neutral-200 hover:scale-110`}
                       whileHover={{ y: -2 }}
                       whileTap={{ scale: 0.95 }}
                     >
@@ -111,7 +109,7 @@ export const Footer = () => {
                     <li key={index}>
                       <Link 
                         to={link.href}
-                        className="text-white/70 hover:text-white transition-colors duration-200 flex items-center group"
+                        className="text-neutral-600 hover:text-neutral-900 transition-colors duration-200 flex items-center group"
                       >
                         <ArrowRight className="w-4 h-4 mr-2 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-200" />
                         {link.name}
@@ -136,7 +134,7 @@ export const Footer = () => {
                     <li key={index}>
                   <Link 
                         to={link.href}
-                        className="text-white/70 hover:text-white transition-colors duration-200 flex items-center group"
+                        className="text-neutral-600 hover:text-neutral-900 transition-colors duration-200 flex items-center group"
                   >
                         <ArrowRight className="w-4 h-4 mr-2 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-200" />
                         {link.name}
@@ -159,8 +157,8 @@ export const Footer = () => {
                 <div className="space-y-4">
                   <div className="flex items-start space-x-3">
                     <MapPin className="w-5 h-5 text-primary-400 mt-1 flex-shrink-0" />
-          <div>
-                      <p className="text-white/70 text-sm leading-relaxed">
+                              <div>
+                      <p className="text-neutral-600 text-sm leading-relaxed">
                         {companyInfo.address}
                       </p>
                     </div>
@@ -169,7 +167,7 @@ export const Footer = () => {
                     <Phone className="w-5 h-5 text-secondary-400 flex-shrink-0" />
                     <a 
                       href={`tel:${companyInfo.phone}`}
-                      className="text-white/70 hover:text-white transition-colors"
+                      className="text-neutral-600 hover:text-neutral-900 transition-colors"
                     >
                       {companyInfo.phone}
                     </a>
@@ -178,7 +176,7 @@ export const Footer = () => {
                     <Mail className="w-5 h-5 text-accent-400 flex-shrink-0" />
                     <a 
                       href={`mailto:${companyInfo.email}`}
-                      className="text-white/70 hover:text-white transition-colors"
+                      className="text-neutral-600 hover:text-neutral-900 transition-colors"
                     >
                       {companyInfo.email}
                     </a>
@@ -189,52 +187,28 @@ export const Footer = () => {
           </div>
         </div>
 
-        {/* Policies Section */}
-        <div className="py-12 border-t border-white/10 ">
-          <div className="grid md:grid-cols-3 gap-8 ">
-            {policies.map((policy, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-white p-6 rounded-2xl transition-all duration-300"
-              >
-                <div className="flex items-start space-x-4 " >
-                  <div className="w-12 h-12 bg-gradient-to-br from-primary-500/20 to-secondary-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <policy.icon className="w-6 h-6 text-primary-400" />
-            </div>
-            <div>
-                    <h5 className="font-bold text-black mb-2">{policy.title}</h5>
-                    <p className="text-sm text-black/60 leading-relaxed">{policy.description}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+         
 
         {/* Bottom Section */}
-        <div className="py-8 border-t border-white/10">
+        <div className="py-8 border-t border-neutral-200">
           <div className="flex flex-col lg:flex-row items-center justify-between space-y-4 lg:space-y-0">
-            <div className="flex items-center space-x-6 text-sm text-white/60">
+            <div className="flex items-center space-x-6 text-sm text-neutral-500">
               <p>© {currentYear} iTech. Tous droits réservés.</p>
               <span className="hidden lg:block">|</span>
               <div className="flex items-center space-x-4">
-                <a href="#" className="hover:text-white transition-colors">
+                <a href="#" className="hover:text-neutral-900 transition-colors">
                   Politique de confidentialité
                 </a>
-                <a href="#" className="hover:text-white transition-colors">
+                <a href="#" className="hover:text-neutral-900 transition-colors">
                   Conditions d'utilisation
                 </a>
-                <a href="#" className="hover:text-white transition-colors">
+                <a href="#" className="hover:text-neutral-900 transition-colors">
                   Mentions légales
                 </a>
               </div>
             </div>
             
-            <div className="flex items-center space-x-2 text-sm text-white/60">
+            <div className="flex items-center space-x-2 text-sm text-neutral-500">
               <Heart className="w-4 h-4 text-red-400" />
               <span>Fabriqué avec passion au</span>
               <Globe className="w-4 h-4 text-blue-400" />

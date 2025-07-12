@@ -53,15 +53,15 @@ export const Header = () => {
     }
   };
 
-  // Keep navigation items white in both themes
+  // Navigation styles with text-gradient and font-neon
   const styles = {
-    activeLink: "text-white bg-white/10 border-accent shadow-lg shadow-accent/20",
-    inactiveLink: "text-white hover:text-white hover:bg-white/5 border-transparent"
+    activeLink: "text-gradient font-neon bg-white/10 border-accent shadow-lg shadow-accent/20",
+    inactiveLink: "text-gradient font-neon hover:text-gradient hover:bg-white/5 border-transparent"
   };
 
   return (
     <motion.header 
-      className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-500 bg-neutral-900 overflow-hidden ${
+      className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-500 bg-white overflow-hidden ${
         isScrolled 
           ? 'backdrop-blur-xl border-b shadow-lg' 
           : ''
@@ -74,7 +74,7 @@ export const Header = () => {
       transition={{ duration: 0.6, type: "spring" }}
     >
       {/* Animated background matching hero section */}
-      <div className="absolute inset-0 bg-cyber opacity-10"></div>
+      <div className="absolute inset-0 bg-white opacity-10"></div>
       
       {/* Floating elements */}
       <motion.div 
@@ -110,7 +110,7 @@ export const Header = () => {
               >
                 <Link
                   to={item.path}
-                  className={`relative px-6 py-2.5 text-sm font-bold rounded-full transition-all duration-300 border ${
+                  className={`relative px-6 py-2.5 text-lg font-bold rounded-full transition-all duration-300 border ${
                     isActive(item.path)
                       ? styles.activeLink
                       : styles.inactiveLink
@@ -210,10 +210,10 @@ export const Header = () => {
                         <Link
                           to={item.path}
                           onClick={() => setIsMobileMenuOpen(false)}
-                          className={`block px-8 py-5 rounded-2xl text-lg font-bold transition-all duration-300 text-center ${
+                          className={`block px-8 py-5 rounded-2xl text-xl font-bold transition-all duration-300 text-center ${
                             isActive(item.path)
-                              ? `text-white bg-gradient-to-r from-accent/30 to-cyan-400/30 shadow-lg shadow-accent/20 border border-accent/20`
-                              : `text-white/90 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10`
+                              ? `text-gradient font-neon bg-gradient-to-r from-accent/30 to-cyan-400/30 shadow-lg shadow-accent/20 border border-accent/20`
+                              : `text-gradient font-neon hover:text-gradient hover:bg-white/5 border border-transparent hover:border-white/10`
                           }`}
                         >
                           {item.label}

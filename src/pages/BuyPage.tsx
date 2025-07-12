@@ -449,11 +449,11 @@ export const BuyPage = () => {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 text-white">
+    <div className="min-h-screen bg-white text-neutral-900">
       {/* Hero Section */}
-      <section className="relative py-32 bg-gradient-to-r from-primary-600/20 via-secondary-600/20 to-purple-600/20 backdrop-blur-sm">
-        <div className="absolute inset-0 bg-cyber opacity-30" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-neutral-900/10 to-neutral-900/30" />
+      <section className="relative py-32 bg-white">
+        <div className="absolute inset-0   opacity-5" />
+        <div className="absolute inset-0  " />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -465,16 +465,16 @@ export const BuyPage = () => {
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 mb-8"
+              className="inline-flex items-center space-x-2 bg-primary-500 rounded-full px-6 py-3 mb-8"
             >
-              <Shield className="w-5 h-5 text-primary-400" />
-              <span className="font-medium">Tech Premium Reconditionnée</span>
+              <Shield className="w-5 h-5 text-white" />
+              <span className="font-medium text-white">Tech Premium Reconditionnée</span>
             </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6, ease: "easeOut" }}
-              className="text-5xl md:text-7xl font-display font-bold mb-6"
+              className="text-5xl md:text-7xl font-display font-bold mb-6 text-neutral-900"
             >
               Market<span className="text-gradient">Place</span>
             </motion.h1>
@@ -482,7 +482,7 @@ export const BuyPage = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.5 }}
-              className="text-xl text-white/70 max-w-3xl mx-auto mb-8"
+              className="text-xl text-neutral-600 max-w-3xl mx-auto mb-8"
             >
               Découvrez notre sélection d'ordinateurs portables et pièces détachées reconditionnés 
               avec une qualité premium et des prix imbattables
@@ -496,13 +496,13 @@ export const BuyPage = () => {
               className="max-w-2xl mx-auto"
             >
               <div className="relative">
-                <Search className="absolute left-6 top-1/2 transform -translate-y-1/2 w-6 h-6 text-white/40" />
+                <Search className="absolute left-6 top-1/2 transform -translate-y-1/2 w-6 h-6 text-neutral-400" />
                 <input
                   type="text"
                   placeholder="Rechercher un produit, une marque..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-16 pr-6 py-4 bg-white/10 backdrop-blur-sm border-2 border-white/20 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:border-primary-400 transition-colors text-lg"
+                  className="w-full pl-16 pr-6 py-4 bg-white border-2 border-neutral-200 rounded-2xl text-neutral-900 placeholder-neutral-500 focus:outline-none focus:border-primary-400 transition-colors text-lg shadow-sm"
                 />
               </div>
             </motion.div>
@@ -511,7 +511,7 @@ export const BuyPage = () => {
       </section>
 
       {/* Categories */}
-      <section className="py-12 bg-gradient-to-r from-neutral-900/80 via-primary-900/10 to-neutral-900/80 backdrop-blur-sm">
+      <section className="py-12 bg-gradient-to-r bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap justify-center gap-4">
             {categories.map((category) => (
@@ -523,12 +523,12 @@ export const BuyPage = () => {
                 className={`flex items-center space-x-3 px-6 py-3 rounded-2xl transition-all ${
                   selectedCategory === category.id
                     ? 'bg-primary-500 text-white'
-                    : 'bg-white/10 text-white/70 hover:bg-white/20'
+                    : 'bg-white text-neutral-700 hover:bg-neutral-100 border border-neutral-200'
                 }`}
               >
                 <category.icon className="w-5 h-5" />
                 <span className="font-medium">{category.name}</span>
-                <span className="bg-white/20 px-2 py-1 rounded-full text-xs">
+                <span className="bg-neutral-200 px-2 py-1 rounded-full text-xs text-neutral-700">
                   {category.count}
                 </span>
               </motion.button>
@@ -543,7 +543,7 @@ export const BuyPage = () => {
             >
               {/* Computer Models for Parts */}
               <div className="max-w-4xl mx-auto">
-                <h3 className="text-lg font-bold text-center mb-4 text-secondary-300">
+                <h3 className="text-lg font-bold text-center mb-4 text-neutral-700">
                   Choisissez votre modèle d'ordinateur
                 </h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -631,16 +631,12 @@ export const BuyPage = () => {
       {/* Main Content */}
       <section className={`py-12 relative ${theme === 'light' ? 'bg-white' : ''}`}>
         {theme === 'light' ? (
-          <>
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.05),transparent_50%)]" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(34,197,94,0.05),transparent_50%)]" />
+          <> 
           </>
         ) : (
           <>
             <div className="absolute inset-0 bg-gradient-to-br from-secondary-900/5 via-transparent to-primary-900/5" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(120,119,198,0.1),transparent_50%)]" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(34,197,94,0.1),transparent_50%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(120,119,198,0.1),transparent_50%)]" /> 
           </>
         )}
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
