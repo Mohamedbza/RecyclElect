@@ -1,11 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import type { Product } from '../components/shared/ProductCard';
 
-interface CartItem {
-  productId: string;
-  quantity: number;
-}
-
 interface CartContextType {
   cart: { [key: string]: number };
   addToCart: (productId: string) => void;
