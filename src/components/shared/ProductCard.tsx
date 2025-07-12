@@ -169,7 +169,7 @@ export const ProductCard = ({
       {/* Description */}
       {product.description && (
         <div className="mb-3">
-          <p className={`text-sm line-clamp-2 ${
+          <p className={`text-sm ${
             theme === 'light' ? 'text-black/70' : 'text-white/70'
           }`}>
             {product.description}
