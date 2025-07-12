@@ -16,7 +16,7 @@ export const CallToActionSection = () => {
             <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
               Prêt à rejoindre la révolution tech ?
             </h2>
-            <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-8">
+            <p className="text-lg md:text-xl text-white max-w-2xl mx-auto mb-8">
               Donnez une seconde vie à vos appareils ou trouvez la perle rare reconditionnée.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">

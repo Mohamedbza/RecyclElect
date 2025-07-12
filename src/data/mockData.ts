@@ -279,80 +279,124 @@ export const testimonials: Testimonial[] = [
 // Navigation
 export const navigationItems: NavigationItem[] = [
   { label: "Accueil", path: "/" },
-  { label: "J'achète", path: "/j-achete" },
+  { label: "Marketplace", path: "/j-achete" },
   { label: "Nous contacter", path: "/nous-contacter" }
 ];
 
 // Produits phares pour la page d'accueil
 export const featuredProducts: Product[] = [
   {
-    id: "macbook-pro-2019-complete",
-    name: "MacBook Pro 13\" 2019",
+    id: "1",
+    name: "Tecra Harman - tactile",
     category: "Laptop",
-    price: "899.99$",
-    imageUrl: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80",
-    specs: "Core i5, 8GB RAM, 256GB SSD",
-    description: '',
-    images: [],
-    specifications: [
-      { id: 'spec1', name: "Processeur", value: "Intel Core i5-1035G1" },
-      { id: 'spec2', name: "Mémoire RAM", value: "8 Go DDR4" },
-      { id: 'spec3', name: "Stockage", value: "256 Go SSD NVMe" },
-      { id: 'spec4', name: "Écran", value: "15.6\" Full HD (1920x1080) Tactile" }
+    price: "300$",
+    imageUrl: "/products/Tecra Harman - tactile/1.jpg",
+    specs: "Core i5 8ème gen, 16GB RAM, 256GB SSD, Tactile",
+    description: "30 jours de garantie 2 heures d'autonomie garantie, mais vont généralement au delà.",
+    images: [
+      '/products/Tecra Harman - tactile/1.jpg',
+      '/products/Tecra Harman - tactile/2.jpg',
+      '/products/Tecra Harman - tactile/3.jpg',
+      '/products/Tecra Harman - tactile/4.jpg',
+      '/products/Tecra Harman - tactile/5.jpg'
     ],
-    warranty: '',
+    specifications: [
+      { id: 'spec1', name: 'Type', value: 'Tactile' },
+      { id: 'spec2', name: 'Processeur', value: 'Core i5 8 eme gen' },
+      { id: 'spec3', name: 'RAM', value: '16GB RAM' },
+      { id: 'spec4', name: 'Stockage', value: '256GB SSD' }
+    ],
+    warranty: '1 mois',
     condition: 'excellent',
-    stock: 1,
-    createdAt: new Date(),
+    stock: 3,
+    brand: 'Toshiba',
+    model: 'MacBook Pro',
+    productType: 'laptop',
+    createdAt: new Date('2024-01-15')
   },
   {
-    id: "dell-xps-13-2021-complete",
-    name: "Dell XPS 13 2021",
+    id: "5",
+    name: "Chromebook 11 Dell",
     category: "Laptop",
-    price: "799.99$",
-    imageUrl: "https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?auto=format&fit=crop&w=600&q=80",
-    specs: "Core i7, 16GB RAM, 512GB SSD",
-    description: '',
-    images: [],
-    specifications: [
-      { id: 'spec1', name: "Processeur", value: "Intel Core i7-1165G7" },
-      { id: 'spec2', name: "Mémoire RAM", value: "16 Go LPDDR4x" },
-      { id: 'spec3', name: "Stockage", value: "512 Go SSD NVMe" },
-      { id: 'spec4', name: "Écran", value: "13.4\" FHD+ (1920x1200) InfinityEdge" }
+    price: "60$",
+    imageUrl: "/products/Chromebook 11 Dell/1.jpg",
+    specs: "Intel Celeron, 4GB RAM, 16GB SSD, 11.6\"",
+    description: "Dell 11.6-inch 2-in-1  Chromebook, Processeur Intel Celeron jusqu'à 2,48 GHz, 4GB Ram 16GB SSD, HDMI, WiFi, Bluetooth, webcam HD intégrée, lecteur de carte SD,2x USB 3.1, 1x HDMI, 1x prise casque/micro,,Chrome OS",
+    images: [
+      '/products/Chromebook 11 Dell/1.jpg',
+      '/products/Chromebook 11 Dell/2.jpg',
+      '/products/Chromebook 11 Dell/3.jpg'
     ],
-    warranty: '',
-    condition: 'excellent',
-    stock: 1,
-    createdAt: new Date(),
+    specifications: [
+      { id: 'spec1', name: 'Processeur', value: "Intel Celeron jusqu'à 2,48 GHz" },
+      { id: 'spec2', name: 'RAM', value: '4GO Ram' },
+      { id: 'spec3', name: 'Stockage', value: '16GB ssd' },
+      { id: 'spec4', name: 'Écran', value: '11,6 Pouces' }
+    ],
+    warranty: '1 mois',
+    condition: 'moyen',
+    stock: 8,
+    brand: 'Dell',
+    model: 'Dell Latitude 3189',
+    productType: 'laptop',
+    createdAt: new Date('2024-02-05')
   },
   {
-    id: "iphone-13-pro",
-    name: "iPhone 13 Pro",
-    category: "Smartphone",
-    price: "999.99$",
-    imageUrl: "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-pro-max-family-select?wid=470&hei=556&fmt=png-alpha&.v=1629923709000",
-    specs: "A15 Bionic, 256GB, Graphite",
-    description: '',
-    images: [],
-    specifications: [],
-    warranty: '',
+    id: "7",
+    name: "Toshiba Tactile core i5 8th gen",
+    category: "Laptop",
+    price: "300$",
+    imageUrl: "/products/Toshiba Tactile core i5 8th gen/1.jpg",
+    specs: "Intel Core i5 8th gen, 16GB RAM, 256GB SSD, 11.6\" tactile",
+    description: "Toshiba Tecra tactile avec processeur Intel Core i5 8ème génération, performance et polyvalence.",
+    images: [
+      '/products/Toshiba Tactile core i5 8th gen/1.jpg',
+      '/products/Toshiba Tactile core i5 8th gen/2.jpg',
+      '/products/Toshiba Tactile core i5 8th gen/3.jpg',
+      '/products/Toshiba Tactile core i5 8th gen/4.jpg',
+      '/products/Toshiba Tactile core i5 8th gen/5.jpg',
+      '/products/Toshiba Tactile core i5 8th gen/6.jpg'
+    ],
+    specifications: [
+      { id: 'spec1', name: 'Processeur', value: 'Intel core i5 8th gen' },
+      { id: 'spec2', name: 'RAM', value: '16GO Ram' },
+      { id: 'spec3', name: 'Stockage', value: '256gb ssd' },
+      { id: 'spec4', name: 'Écran', value: '11,6 Pouces tactile' }
+    ],
+    warranty: '1 mois',
     condition: 'excellent',
-    stock: 1,
-    createdAt: new Date(),
+    stock: 8,
+    brand: 'Toshiba Tecra',
+    model: 'Toshiba Tactile core i5 8th gen',
+    productType: 'laptop',
+    createdAt: new Date('2024-02-15')
   },
   {
-    id: "sony-wh-1000xm4",
-    name: "Sony WH-1000XM4",
-    category: "Audio",
-    price: "349.99$",
-    imageUrl: "https://images.unsplash.com/photo-1629367494173-c78a56567877?auto=format&fit=crop&w=600&q=80",
-    specs: "Noise Cancelling, 30h Autonomie",
-    description: '',
-    images: [],
-    specifications: [],
-    warranty: '',
+    id: "9",
+    name: "Chromebook Tactile Asus",
+    category: "Laptop",
+    price: "100$",
+    imageUrl: "/products/chromebook tactile asus/1.jpg",
+    specs: "Intel Core i5, 4GB RAM, 64GB SSD, 11.6\" tactile",
+    description: "ASUS Ordinateur portable Chromebook, écran HD de 11,6 pouces, 4 Go de RAM LPDDR4X, stockage eMMC 16 Go, durabilité MIL-STD 810H, ChromeOS, gris minéra Chromebook pour professionnels. Adapter pour suivre ces cours ou formations n'importe où. Pliable 180° Tactile 4go de Ram 64gb de disque dur ssd",
+    images: [
+      '/products/chromebook tactile asus/1.jpg',
+      '/products/chromebook tactile asus/2.jpg',
+      '/products/chromebook tactile asus/3.jpg',
+      '/products/chromebook tactile asus/4.jpg'
+    ],
+    specifications: [
+      { id: 'spec1', name: 'Processeur', value: 'Intel core i5 8th gen' },
+      { id: 'spec2', name: 'RAM', value: '4 GO Ram' },
+      { id: 'spec3', name: 'Stockage', value: '64gb ssd' },
+      { id: 'spec4', name: 'Écran', value: '11,6 Pouces tactile' }
+    ],
+    warranty: '1 mois',
     condition: 'excellent',
-    stock: 1,
-    createdAt: new Date(),
+    stock: 8,
+    brand: 'Asus',
+    model: 'Chromebook Tactile Asus',
+    productType: 'laptop',
+    createdAt: new Date('2024-02-25')
   }
 ]; 

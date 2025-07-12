@@ -30,7 +30,7 @@ export const Footer = () => {
 
   const quickLinks = [
     { name: "Accueil", href: "/" },
-    { name: "J'achète", href: "/j-achete" },
+    { name: "Marketplace", href: "/j-achete" },
     { name: "Nous contacter", href: "/nous-contacter" }
   ];
 
@@ -190,8 +190,8 @@ export const Footer = () => {
         </div>
 
         {/* Policies Section */}
-        <div className="py-12 border-t border-white/10">
-          <div className="grid md:grid-cols-3 gap-8">
+        <div className="py-12 border-t border-white/10 ">
+          <div className="grid md:grid-cols-3 gap-8 ">
             {policies.map((policy, index) => (
               <motion.div
                 key={index}
@@ -199,15 +199,15 @@ export const Footer = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="glass p-6 rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-300"
+                className="bg-white p-6 rounded-2xl transition-all duration-300"
               >
-                <div className="flex items-start space-x-4">
+                <div className="flex items-start space-x-4 " >
                   <div className="w-12 h-12 bg-gradient-to-br from-primary-500/20 to-secondary-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
                     <policy.icon className="w-6 h-6 text-primary-400" />
             </div>
             <div>
-                    <h5 className="font-bold text-white mb-2">{policy.title}</h5>
-                    <p className="text-sm text-white/60 leading-relaxed">{policy.description}</p>
+                    <h5 className="font-bold text-black mb-2">{policy.title}</h5>
+                    <p className="text-sm text-black/60 leading-relaxed">{policy.description}</p>
                   </div>
                 </div>
               </motion.div>

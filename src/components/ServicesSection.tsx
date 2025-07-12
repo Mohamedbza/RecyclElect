@@ -47,7 +47,7 @@ export const ServicesSection = () => {
           <h2 className="text-4xl md:text-5xl font-display font-bold">
             Des services <span className="text-gradient font-neon">pensés pour vous</span>
           </h2>
-          <p className="mt-4 text-lg md:text-xl text-white/60 max-w-3xl mx-auto">
+          <p className="mt-4 text-lg md:text-xl text-gray-500 max-w-3xl mx-auto">
             Que vous cherchiez à acheter ou simplement en savoir plus, nous avons ce qu'il vous faut.
           </p>
         </motion.div>
@@ -66,7 +66,7 @@ export const ServicesSection = () => {
                   <service.icon className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
-              <p className="text-white/70 mb-6 flex-grow">{service.description}</p>
+              <p className="text-gray-500 mb-6 flex-grow">{service.description}</p>
               <ul className="space-y-3 mb-8">
                 {service.features.map((feature, i) => (
                   <li key={i} className="flex items-center">

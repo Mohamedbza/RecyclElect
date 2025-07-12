@@ -3,11 +3,11 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { navigationItems } from '../data/mockData';
 import { assets } from '../config/assets';
+import { ThemeToggle } from './shared/ThemeToggle';
+import { useTheme } from '../contexts/ThemeContext';
 import {
   Menu,
   X,
-  ShoppingBag,
-  Heart,
   Search,
   User
 } from 'lucide-react';
@@ -16,6 +16,7 @@ export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const { theme } = useTheme();
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -36,29 +37,47 @@ export const Header = () => {
     }
   };
 
-  const activeLinkStyle = "text-white bg-white/10 border-accent shadow-lg shadow-accent/20";
-  const inactiveLinkStyle = "text-neutral-300 hover:text-white hover:bg-white/5 border-transparent";
-
-  // Couleurs spécifiques pour chaque élément de navigation
+  // Keep navigation items white in both themes
+  const styles = {
+    activeLink: "text-white bg-white/10 border-accent shadow-lg shadow-accent/20",
+    inactiveLink: "text-white hover:text-white hover:bg-white/5 border-transparent"
+  };
 
   return (
     <motion.header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-500 bg-neutral-900 overflow-hidden ${
         isScrolled 
-          ? 'glass-dark backdrop-blur-xl border-b border-white/10 shadow-lg' 
-          : 'bg-transparent'
+          ? 'backdrop-blur-xl border-b shadow-lg' 
+          : ''
       }`}
+      style={{
+        borderColor: theme === 'light' ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.1)'
+      }}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, type: "spring" }}
     >
+      {/* Animated background matching hero section */}
+      <div className="absolute inset-0 bg-cyber opacity-10"></div>
+      
+      {/* Floating elements */}
+      <motion.div 
+        className="absolute top-4 left-4 w-12 h-12 bg-primary-400/10 rounded-full blur-xl animate-float"
+      />
+      <motion.div 
+        className="absolute top-8 right-8 w-16 h-16 bg-secondary-400/10 rounded-full blur-xl animate-bounce-slow"
+      />
+      <motion.div 
+        className="absolute bottom-4 left-1/2 w-10 h-10 bg-accent-400/10 rounded-full blur-xl animate-float"
+        style={{ animationDuration: '5s' }}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-32">
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img
               src={assets.logo}
-              alt="RecyclElect Logo"
+              alt="itech"
               className="w-28 h-28 object-contain"
             />
           </Link>
@@ -77,8 +96,8 @@ export const Header = () => {
                   to={item.path}
                   className={`relative px-6 py-2.5 text-sm font-bold rounded-full transition-all duration-300 border ${
                     isActive(item.path)
-                      ? activeLinkStyle
-                      : inactiveLinkStyle
+                      ? styles.activeLink
+                      : styles.inactiveLink
                   }`}
                 >
                   {item.label}
@@ -99,57 +118,23 @@ export const Header = () => {
 
           {/* Action Buttons */}
           <div className="hidden lg:flex items-center space-x-3">
+            <ThemeToggle />
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="p-3 text-neutral-300 hover:text-emerald-500 transition-colors duration-200 rounded-xl hover:bg-white/10 group"
+              className="p-3 text-white hover:text-emerald-500 hover:bg-white/10 transition-colors duration-200 rounded-xl group"
             >
               <Search className="w-5 h-5 group-hover:scale-110 transition-transform" />
             </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="p-3 text-neutral-300 hover:text-pink-500 transition-colors duration-200 rounded-xl hover:bg-white/10 relative group"
-            >
-              <Heart className="w-5 h-5 group-hover:scale-110 transition-transform" />
-              <span className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-r from-pink-400 to-rose-400 text-xs text-white rounded-full flex items-center justify-center animate-pulse">
-                3
-              </span>
-            </motion.button>
-            <Link to="/panier">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="p-3 text-neutral-300 hover:text-blue-500 transition-colors duration-200 rounded-xl hover:bg-white/10 relative group"
-              >
-                <ShoppingBag className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                <span className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-r from-blue-400 to-indigo-400 text-xs text-white rounded-full flex items-center justify-center animate-bounce">
-                  2
-                </span>
-              </motion.button>
-            </Link>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-accent to-cyan-400 px-6 py-3 text-white font-bold rounded-full text-sm hover:shadow-lg hover:shadow-accent/40 transition-all duration-300 relative overflow-hidden group flex items-center"
-            >
-              <User className="w-4 h-4 mr-2" />
-              <span className="relative z-10">Connexion</span>
-              {/* Effet de brillance sur hover */}
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                initial={{ x: "-100%" }}
-                whileHover={{ x: "100%" }}
-                transition={{ duration: 0.6 }}
-              />
-            </motion.button>
+
+             
           </div>
 
           {/* Mobile menu button */}
           <div className="lg:hidden">
             <motion.button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-3 text-neutral-300 hover:text-purple-500 focus:outline-none rounded-xl hover:bg-white/10 transition-colors duration-200"
+              className="p-3 text-white hover:text-purple-500 hover:bg-white/10 focus:outline-none rounded-xl transition-colors duration-200"
               whileTap={{ scale: 0.95 }}
             >
               <AnimatePresence mode="wait">
@@ -189,7 +174,10 @@ export const Header = () => {
               transition={{ duration: 0.3 }}
               className="lg:hidden overflow-hidden"
             >
-              <div className="glass-dark rounded-3xl mx-4 mb-4 p-6 border border-white/10">
+              <div className="glass rounded-3xl mx-4 mb-4 p-6 border"
+                style={{
+                  borderColor: theme === 'light' ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.1)'
+                }}>
                 <div className="space-y-3">
                   {navigationItems.map((item, index) => (
                     <motion.div
@@ -204,7 +192,7 @@ export const Header = () => {
                         className={`block px-6 py-4 rounded-xl text-base font-bold transition-all duration-200 ${
                           isActive(item.path)
                             ? `text-white bg-accent/20`
-                            : `text-neutral-200 hover:text-white hover:bg-white/10`
+                            : `text-white hover:text-white hover:bg-white/10`
                         }`}
                       >
                         {item.label}
@@ -213,23 +201,15 @@ export const Header = () => {
                   ))}
                 </div>
                 
-                <div className="mt-6 pt-6 border-t border-white/20">
+                <div className="mt-6 pt-6 border-t"
+                  style={{
+                    borderColor: theme === 'light' ? 'rgba(0, 0, 0, 0.2)' : 'rgba(255, 255, 255, 0.2)'
+                  }}>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">
-                      <button className="p-3 text-neutral-300 hover:text-emerald-500 transition-colors duration-200 rounded-xl hover:bg-white/10">
+                      <ThemeToggle />
+                      <button className="p-3 text-white hover:text-emerald-500 hover:bg-white/10 transition-colors duration-200 rounded-xl">
                         <Search className="w-5 h-5" />
-                      </button>
-                      <button className="p-3 text-neutral-300 hover:text-pink-500 transition-colors duration-200 rounded-xl hover:bg-white/10 relative">
-                        <Heart className="w-5 h-5" />
-                        <span className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-r from-pink-400 to-rose-400 text-xs text-white rounded-full flex items-center justify-center">
-                          3
-                        </span>
-                      </button>
-                      <button className="p-3 text-neutral-300 hover:text-blue-500 transition-colors duration-200 rounded-xl hover:bg-white/10 relative">
-                        <ShoppingBag className="w-5 h-5" />
-                        <span className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-r from-blue-400 to-indigo-400 text-xs text-white rounded-full flex items-center justify-center">
-                          2
-                        </span>
                       </button>
                     </div>
                     <button className="bg-gradient-to-r from-accent to-cyan-400 px-6 py-3 text-white font-bold rounded-full text-sm shadow-lg shadow-accent/30 flex items-center justify-center">
@@ -243,6 +223,8 @@ export const Header = () => {
           )}
         </AnimatePresence>
       </div>
+
+
     </motion.header>
   );
 }; 

@@ -41,11 +41,11 @@ interface ContactFormData {
 }
 
 const contactReasons = [
-  { value: 'achat', label: 'Question sur un achat', icon: MessageSquare, color: 'text-blue-400' },
-  { value: 'plainte', label: 'Déposer une plainte', icon: AlertCircle, color: 'text-red-400' },
-  { value: 'reclamation', label: 'Faire une réclamation', icon: RefreshCw, color: 'text-yellow-400' },
-  { value: 'negociation', label: 'Négocier un prix', icon: ArrowRight, color: 'text-purple-400' },
-  { value: 'autre', label: 'Autre demande', icon: Info, color: 'text-white/70' }
+  { value: 'achat', label: 'Question sur un achat', icon: MessageSquare, color: 'text-blue-500 dark:text-blue-400' },
+  { value: 'plainte', label: 'Déposer une plainte', icon: AlertCircle, color: 'text-red-500 dark:text-red-400' },
+  { value: 'reclamation', label: 'Faire une réclamation', icon: RefreshCw, color: 'text-yellow-500 dark:text-yellow-400' },
+  { value: 'negociation', label: 'Négocier un prix', icon: ArrowRight, color: 'text-purple-500 dark:text-purple-400' },
+  { value: 'autre', label: 'Autre demande', icon: Info, color: 'text-gray-600 dark:text-white/70' }
 ];
 
 const companyValues = [
@@ -194,25 +194,24 @@ export const ContactPage = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-center pt-8"
           >
-            <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 mb-8">
-              <HeadphonesIcon className="w-5 h-5 text-primary-400" />
-              <span className="font-medium">Support & Contact</span>
+            <div className="inline-flex items-center space-x-2 bg-white/80 dark:bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 mb-8 border border-gray-200 dark:border-white/20">
+              <HeadphonesIcon className="w-5 h-5 text-blue-600 dark:text-primary-400" />
+              <span className="font-medium text-gray-900 dark:text-white">Support & Contact</span>
             </div>
-            <h1 className="text-5xl md:text-6xl font-display font-bold mb-6">
+            <h1 className="text-5xl md:text-6xl font-display font-bold mb-6 text-white">
               Nous <span className="text-gradient">Contacter</span>
             </h1>
-            <p className="text-xl text-white/70 max-w-3xl mx-auto">
-              Une question, une réclamation ou besoin d'assistance ? Notre équipe est là pour vous accompagner
+            <p className="text-xl text-white max-w-3xl mx-auto">
+              Une question, une réclamation ou besoin d'assistance ?  
             </p>
+            <p className="text-xl text-white max-w-3xl mx-auto"> 
+            Notre équipe est là pour vous accompagner</p>
           </motion.div>
         </div>
       </section>
 
       {/* Contact Form & Info */}
-      <section className="py-20 relative">
-        <div className="absolute inset-0 bg-gradient-to-br from-secondary-900/5 via-transparent to-primary-900/5" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(120,119,198,0.1),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(34,197,94,0.1),transparent_50%)]" />
+      <section className="py-20 relative bg-white">
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
@@ -221,11 +220,11 @@ export const ContactPage = () => {
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="glass-dark p-8 rounded-3xl border border-white/10"
+              className="bg-white dark:glass-dark p-8 rounded-3xl border border-gray-200 dark:border-white/10 shadow-lg dark:shadow-none"
             >
               <div className="flex items-center mb-8">
-                <MessageSquare className="w-6 h-6 text-primary-400 mr-3" />
-                <h2 className="text-2xl font-bold">Envoyer un message</h2>
+                <MessageSquare className="w-6 h-6 text-blue-600 dark:text-primary-400 mr-3" />
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Envoyer un message</h2>
               </div>
 
               <AnimatePresence>
@@ -234,13 +233,13 @@ export const ContactPage = () => {
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
-                    className="bg-green-500/20 border border-green-500/30 rounded-2xl p-4 mb-6"
+                    className="bg-green-50 dark:bg-green-500/20 border border-green-200 dark:border-green-500/30 rounded-2xl p-4 mb-6"
                   >
                     <div className="flex items-center">
-                      <CheckCircle className="w-5 h-5 text-green-400 mr-3" />
+                      <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400 mr-3" />
                       <div>
-                        <p className="font-bold text-green-400">Message envoyé !</p>
-                        <p className="text-sm text-green-300">Nous vous répondrons dans les 24h</p>
+                        <p className="font-bold text-green-800 dark:text-green-400">Message envoyé !</p>
+                        <p className="text-sm text-green-600 dark:text-green-300">Nous vous répondrons dans les 24h</p>
                       </div>
                     </div>
                   </motion.div>
@@ -249,65 +248,70 @@ export const ContactPage = () => {
 
               <form onSubmit={onSubmit} className="space-y-6">
                 {/* Personal Info */}
-                <div className="grid grid-cols-2 gap-4">
-                  <FormField
-                    type="text"
-                    label="Prénom"
-                    icon={User}
-                    name="firstName"
-                    value={formData.firstName}
-                    onChange={handleInputChange}
-                    placeholder="Jean"
-                    error={errors.firstName}
-                    required
-                  />
+                <div className="grid grid-cols-2 gap-4 text-black">
+                  <div>
+                    <label className="block text-sm font-medium mb-2 text-gray-900 dark:text-white">Prénom *</label>
+                    <div className="relative">
+                      <User className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-white/40" />
+                      <input
+                        name="firstName"
+                        value={formData.firstName}
+                        onChange={handleInputChange}
+                        className="w-full pl-12 pr-4 py-3 bg-gray-50 dark:bg-white/10 border-2 rounded-xl transition-all duration-300 border-gray-200 dark:border-white/20 focus:border-blue-500 dark:focus:border-primary-400 focus:outline-none text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-white/50"
+                        placeholder="Jean"
+                      />
+                    </div>
+                    {errors.firstName && (
+                      <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.firstName}</p>
+                    )}
+                  </div>
                   
                   <div>
-                    <label className="block text-sm font-medium mb-2">Nom *</label>
+                    <label className="block text-sm font-medium mb-2 text-gray-900 dark:text-white">Nom *</label>
                     <div className="relative">
-                      <User className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/40" />
+                      <User className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-white/40" />
                       <input
                         name="lastName"
                         value={formData.lastName}
                         onChange={handleInputChange}
-                        className="w-full pl-12 pr-4 py-3 bg-white/10 border-2 rounded-xl transition-all duration-300 border-white/20 focus:border-primary-400 focus:outline-none"
+                        className="w-full pl-12 pr-4 py-3 bg-gray-50 dark:bg-white/10 border-2 rounded-xl transition-all duration-300 border-gray-200 dark:border-white/20 focus:border-blue-500 dark:focus:border-primary-400 focus:outline-none text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-white/50"
                         placeholder="Dupont"
                       />
                     </div>
                     {errors.lastName && (
-                      <p className="mt-1 text-sm text-red-400">{errors.lastName}</p>
+                      <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.lastName}</p>
                     )}
                   </div>
                 </div>
 
                 {/* Contact Info */}
                 <div>
-                  <label className="block text-sm font-medium mb-2">Email *</label>
+                  <label className="block text-sm font-medium mb-2 text-gray-900 dark:text-white">Email *</label>
                   <div className="relative">
-                    <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/40" />
+                    <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-white/40" />
                     <input
                       name="email"
                       type="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-full pl-12 pr-4 py-3 bg-white/10 border-2 rounded-xl transition-all duration-300 border-white/20 focus:border-primary-400 focus:outline-none"
+                      className="w-full pl-12 pr-4 py-3 bg-gray-50 dark:bg-white/10 border-2 rounded-xl transition-all duration-300 border-gray-200 dark:border-white/20 focus:border-blue-500 dark:focus:border-primary-400 focus:outline-none text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-white/50"
                       placeholder="jean.dupont@email.com"
                     />
                   </div>
                   {errors.email && (
-                    <p className="mt-1 text-sm text-red-400">{errors.email}</p>
+                    <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.email}</p>
                   )}
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-2">Téléphone (optionnel)</label>
+                  <label className="block text-sm font-medium mb-2 text-gray-900 dark:text-white">Téléphone (optionnel)</label>
                   <div className="relative">
-                    <Phone className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/40" />
+                    <Phone className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-white/40" />
                     <input
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="w-full pl-12 pr-4 py-3 bg-white/10 border-2 rounded-xl transition-all duration-300 border-white/20 focus:border-primary-400 focus:outline-none"
+                      className="w-full pl-12 pr-4 py-3 bg-gray-50 dark:bg-white/10 border-2 rounded-xl transition-all duration-300 border-gray-200 dark:border-white/20 focus:border-blue-500 dark:focus:border-primary-400 focus:outline-none text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-white/50"
                       placeholder="+1 (514) 123-4567"
                     />
                   </div>
@@ -315,7 +319,7 @@ export const ContactPage = () => {
 
                 {/* Contact Reason */}
                 <div>
-                  <label className="block text-sm font-medium mb-4">Motif de contact *</label>
+                  <label className="block text-sm font-medium mb-4 text-gray-900 dark:text-white">Motif de contact *</label>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     {contactReasons.map((reason) => (
                       <label key={reason.value} className="relative">
@@ -328,69 +332,69 @@ export const ContactPage = () => {
                         />
                         <div className={`p-4 rounded-xl border-2 transition-all duration-300 cursor-pointer ${
                           formData.contactReason === reason.value
-                            ? 'border-primary-400 bg-primary-500/20'
-                            : 'border-white/20 bg-white/5 hover:border-white/40'
+                            ? 'border-blue-500 bg-blue-50 dark:border-primary-400 dark:bg-primary-500/20'
+                            : 'border-gray-200 bg-gray-50 dark:border-white/20 dark:bg-white/5 hover:border-gray-300 dark:hover:border-white/40'
                         }`}>
                           <div className="flex items-center">
                             <reason.icon className={`w-5 h-5 mr-3 ${reason.color}`} />
-                            <span className="font-medium text-sm">{reason.label}</span>
+                            <span className="font-medium text-sm text-gray-900 dark:text-white">{reason.label}</span>
                           </div>
                         </div>
                       </label>
                     ))}
                   </div>
                   {errors.contactReason && (
-                    <p className="mt-1 text-sm text-red-400">{errors.contactReason}</p>
+                    <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.contactReason}</p>
                   )}
                 </div>
 
                 {/* Subject */}
                 <div>
-                  <label className="block text-sm font-medium mb-2">Objet du message *</label>
+                  <label className="block text-sm font-medium mb-2 text-gray-900 dark:text-white">Objet du message *</label>
                   <div className="relative">
-                    <FileText className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/40" />
+                    <FileText className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-white/40" />
                     <input
                       name="subject"
                       value={formData.subject}
                       onChange={handleInputChange}
-                      className="w-full pl-12 pr-4 py-3 bg-white/10 border-2 rounded-xl transition-all duration-300 border-white/20 focus:border-primary-400 focus:outline-none"
+                      className="w-full pl-12 pr-4 py-3 bg-gray-50 dark:bg-white/10 border-2 rounded-xl transition-all duration-300 border-gray-200 dark:border-white/20 focus:border-blue-500 dark:focus:border-primary-400 focus:outline-none text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-white/50"
                       placeholder="Résumez votre demande en quelques mots"
                     />
                   </div>
                   {errors.subject && (
-                    <p className="mt-1 text-sm text-red-400">{errors.subject}</p>
+                    <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.subject}</p>
                   )}
                 </div>
 
                 {/* Message */}
                 <div>
-                  <label className="block text-sm font-medium mb-2">Message *</label>
+                  <label className="block text-sm font-medium mb-2 text-gray-900 dark:text-white">Message *</label>
                   <textarea
                     name="message"
                     value={formData.message}
                     onChange={handleInputChange}
                     rows={5}
-                    className="w-full p-4 bg-white/10 border-2 rounded-xl transition-all duration-300 border-white/20 focus:border-primary-400 focus:outline-none resize-none"
+                    className="w-full p-4 bg-gray-50 dark:bg-white/10 border-2 rounded-xl transition-all duration-300 border-gray-200 dark:border-white/20 focus:border-blue-500 dark:focus:border-primary-400 focus:outline-none resize-none text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-white/50"
                     placeholder="Décrivez votre demande en détail..."
                   />
                   {errors.message && (
-                    <p className="mt-1 text-sm text-red-400">{errors.message}</p>
+                    <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.message}</p>
                   )}
                 </div>
 
                 {/* Photos Upload */}
                 <div>
-                  <label className="block text-sm font-medium mb-2">Photos (optionnel)</label>
+                  <label className="block text-sm font-medium mb-2 text-gray-900 dark:text-white">Photos (optionnel)</label>
                   <div className="relative">
-                    <Image className="absolute left-4 top-4 w-5 h-5 text-white/40" />
+                    <Image className="absolute left-4 top-4 w-5 h-5 text-gray-400 dark:text-white/40" />
                     <input
                       type="file"
                       multiple
                       accept="image/*"
-                      className="w-full pl-12 pr-4 py-3 bg-white/10 border-2 rounded-xl transition-all duration-300 border-white/20 focus:border-primary-400 focus:outline-none file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary-500 file:text-white hover:file:bg-primary-600"
+                      className="w-full pl-12 pr-4 py-3 bg-gray-50 dark:bg-white/10 border-2 rounded-xl transition-all duration-300 border-gray-200 dark:border-white/20 focus:border-blue-500 dark:focus:border-primary-400 focus:outline-none file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-500 file:text-white hover:file:bg-blue-600 text-gray-900 dark:text-white"
                     />
                   </div>
-                  <p className="text-xs text-white/50 mt-1">Formats acceptés: JPG, PNG, WebP (max 5 fichiers)</p>
+                  <p className="text-xs text-gray-500 dark:text-white/50 mt-1">Formats acceptés: JPG, PNG, WebP (max 5 fichiers)</p>
                 </div>
 
                 {/* Submit Button */}
@@ -427,31 +431,31 @@ export const ContactPage = () => {
               className="space-y-8"
             >
               {/* Contact Details */}
-              <div className="glass-dark p-8 rounded-3xl border border-white/10">
-                <h3 className="text-xl font-bold mb-6 flex items-center">
-                  <Phone className="w-5 h-5 text-secondary-400 mr-3" />
+              <div className="bg-white dark:glass-dark p-8 rounded-3xl border border-gray-200 dark:border-white/10 shadow-lg dark:shadow-none">
+                <h3 className="text-xl font-bold mb-6 flex items-center text-gray-900 dark:text-white">
+                  <Phone className="w-5 h-5 text-blue-600 dark:text-secondary-400 mr-3" />
                   Informations de contact
                 </h3>
                 
                 <div className="space-y-6">
                   <div className="flex items-center">
-                    <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center mr-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-green-500 rounded-2xl flex items-center justify-center mr-4">
                       <Mail className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <p className="font-bold">Email</p>
-                      <p className="text-white/70">contact@recyclelect.ca</p>
+                      <p className="font-bold text-gray-900 dark:text-white">Email</p>
+                      <p className="text-gray-600 dark:text-white/70">contact@recyclelect.ca</p>
                     </div>
                   </div>
                   
                   <div className="flex items-center">
-                    <div className="w-12 h-12 bg-gradient-to-br from-secondary-500 to-purple-500 rounded-2xl flex items-center justify-center mr-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-purple-500 rounded-2xl flex items-center justify-center mr-4">
                       <Clock className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <p className="font-bold">Heures d'ouverture</p>
-                      <p className="text-white/70">Lun-Ven: 9h-18h</p>
-                      <p className="text-white/70">Sam: 10h-16h</p>
+                      <p className="font-bold text-gray-900 dark:text-white">Heures d'ouverture</p>
+                      <p className="text-gray-600 dark:text-white/70">Lun-Ven: 9h-18h</p>
+                      <p className="text-gray-600 dark:text-white/70">Sam: 10h-16h</p>
                     </div>
                   </div>
                   
@@ -460,22 +464,22 @@ export const ContactPage = () => {
                       <MapPin className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <p className="font-bold">Adresse</p>
-                      <p className="text-white/70">123 Rue Tech</p>
-                      <p className="text-white/70">Montréal, QC H1A 2B3</p>
+                      <p className="font-bold text-gray-900 dark:text-white">Adresse</p>
+                      <p className="text-gray-600 dark:text-white/70">123 Rue Tech</p>
+                      <p className="text-gray-600 dark:text-white/70">Montréal, QC H1A 2B3</p>
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Company Mission */}
-              <div className="glass-dark p-8 rounded-3xl border border-white/10">
-                <h3 className="text-xl font-bold mb-6 flex items-center">
-                  <Leaf className="w-5 h-5 text-green-400 mr-3" />
+              <div className="bg-white dark:glass-dark p-8 rounded-3xl border border-gray-200 dark:border-white/10 shadow-lg dark:shadow-none">
+                <h3 className="text-xl font-bold mb-6 flex items-center text-gray-900 dark:text-white">
+                  <Leaf className="w-5 h-5 text-green-600 dark:text-green-400 mr-3" />
                   Notre mission
                 </h3>
-                <p className="text-white/80 mb-6">
-                  <strong>RecyclElect</strong> est une entreprise en démarrage spécialisée dans la commercialisation 
+                <p className="text-gray-600 dark:text-white/80 mb-6">
+                  <strong className="text-gray-900 dark:text-white">RecyclElect</strong> est une entreprise en démarrage spécialisée dans la commercialisation 
                   d'équipements électroniques d'occasion. Nous promouvons la durabilité en donnant une seconde vie 
                   aux appareils électroniques.
                 </p>
@@ -483,32 +487,32 @@ export const ContactPage = () => {
                 <div className="grid grid-cols-2 gap-4">
                   {companyValues.map((value, index) => (
                     <div key={index} className="text-center">
-                      <div className="w-12 h-12 bg-gradient-to-br from-primary-500/20 to-secondary-500/20 rounded-2xl flex items-center justify-center mx-auto mb-3">
-                        <value.icon className="w-6 h-6 text-primary-400" />
+                      <div className="w-12 h-12 bg-gradient-to-br from-blue-500/20 to-green-500/20 dark:from-primary-500/20 dark:to-secondary-500/20 rounded-2xl flex items-center justify-center mx-auto mb-3">
+                        <value.icon className="w-6 h-6 text-blue-600 dark:text-primary-400" />
                       </div>
-                      <h4 className="font-bold text-sm mb-1">{value.title}</h4>
-                      <p className="text-xs text-white/60">{value.description}</p>
+                      <h4 className="font-bold text-sm mb-1 text-gray-900 dark:text-white">{value.title}</h4>
+                      <p className="text-xs text-gray-600 dark:text-white/60">{value.description}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Social Links */}
-              <div className="glass-dark p-8 rounded-3xl border border-white/10">
-                <h3 className="text-xl font-bold mb-6">Suivez-nous</h3>
+              <div className="bg-white dark:glass-dark p-8 rounded-3xl border border-gray-200 dark:border-white/10 shadow-lg dark:shadow-none">
+                <h3 className="text-xl font-bold mb-6 text-gray-900 dark:text-white">Suivez-nous</h3>
                 <div className="flex space-x-4">
                   {[
-                    { icon: Facebook, color: 'hover:text-blue-400', bg: 'hover:bg-blue-400/20' },
-                    { icon: Instagram, color: 'hover:text-pink-400', bg: 'hover:bg-pink-400/20' },
-                    { icon: Twitter, color: 'hover:text-sky-400', bg: 'hover:bg-sky-400/20' },
-                    { icon: Linkedin, color: 'hover:text-blue-600', bg: 'hover:bg-blue-600/20' }
+                    { icon: Facebook, color: 'hover:text-blue-600', bg: 'hover:bg-blue-50 dark:hover:bg-blue-400/20' },
+                    { icon: Instagram, color: 'hover:text-pink-600', bg: 'hover:bg-pink-50 dark:hover:bg-pink-400/20' },
+                    { icon: Twitter, color: 'hover:text-sky-600', bg: 'hover:bg-sky-50 dark:hover:bg-sky-400/20' },
+                    { icon: Linkedin, color: 'hover:text-blue-700', bg: 'hover:bg-blue-50 dark:hover:bg-blue-600/20' }
                   ].map((social, index) => (
                     <motion.a
                       key={index}
                       href="#"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
-                      className={`p-3 rounded-xl transition-all duration-300 ${social.color} ${social.bg} border border-white/10 hover:border-white/30`}
+                      className={`p-3 rounded-xl transition-all duration-300 ${social.color} ${social.bg} border border-gray-200 dark:border-white/10 hover:border-gray-300 dark:hover:border-white/30 text-gray-600 dark:text-white`}
                     >
                       <social.icon className="w-6 h-6" />
                     </motion.a>
@@ -521,7 +525,7 @@ export const ContactPage = () => {
       </section>
 
       {/* Policies Section */}
-      <section className="py-20 bg-gradient-to-r from-neutral-900/80 via-primary-900/10 to-neutral-900/80">
+      <section className="py-20 bg-gradient-to-r from-gray-50 via-blue-50 to-gray-50 dark:from-neutral-900/80 dark:via-primary-900/10 dark:to-neutral-900/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -529,10 +533,10 @@ export const ContactPage = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
+            <h2 className="text-4xl md:text-5xl font-display font-bold mb-6 text-gray-900 dark:text-white">
               Nos <span className="text-gradient">Politiques</span>
             </h2>
-            <p className="text-xl text-white/60 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 dark:text-white/60 max-w-3xl mx-auto">
               Transparence et confiance au cœur de notre relation client
             </p>
           </motion.div>
@@ -545,7 +549,7 @@ export const ContactPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="glass-dark rounded-3xl border border-white/10 overflow-hidden group hover:border-primary-400/50 transition-all duration-300"
+                className="bg-white dark:glass-dark rounded-3xl border border-gray-200 dark:border-white/10 overflow-hidden group hover:border-blue-500/50 dark:hover:border-primary-400/50 transition-all duration-300 shadow-lg dark:shadow-none"
               >
                 <div className={`h-2 bg-gradient-to-r ${policy.color}`} />
                 <div className="p-8">
@@ -554,16 +558,16 @@ export const ContactPage = () => {
                       <policy.icon className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold">{policy.title}</h3>
-                      <p className="text-white/60 text-sm">{policy.description}</p>
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-white">{policy.title}</h3>
+                      <p className="text-gray-600 dark:text-white/60 text-sm">{policy.description}</p>
                     </div>
                   </div>
 
                   <div className="space-y-3">
                     {policy.details.map((detail, detailIndex) => (
                       <div key={detailIndex} className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-400 mr-3 flex-shrink-0" />
-                        <span className="text-white/80 text-sm">{detail}</span>
+                        <CheckCircle className="w-4 h-4 text-green-600 dark:text-green-400 mr-3 flex-shrink-0" />
+                        <span className="text-gray-700 dark:text-white/80 text-sm">{detail}</span>
                       </div>
                     ))}
                   </div>
@@ -585,7 +589,7 @@ export const ContactPage = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20">
+      <section className="py-20 bg-gradient-to-r from-primary-600/20 via-secondary-600/20 to-purple-600/20 backdrop-blur-sm">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -593,10 +597,10 @@ export const ContactPage = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-display font-bold mb-4">
+            <h2 className="text-4xl font-display font-bold mb-4 text-white">
               Questions <span className="text-gradient">Fréquentes</span>
             </h2>
-            <p className="text-white/60">Les réponses aux questions les plus courantes</p>
+            <p className="text-white">Les réponses aux questions les plus courantes</p>
           </motion.div>
 
           <div className="space-y-4">
@@ -621,15 +625,15 @@ export const ContactPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="glass-dark rounded-2xl border border-white/10"
+                className="bg-white dark:glass-dark rounded-2xl border border-gray-200 dark:border-white/10 shadow-lg dark:shadow-none"
               >
                 <details className="group">
                   <summary className="p-6 cursor-pointer flex items-center justify-between">
-                    <h3 className="font-bold text-lg">{faq.question}</h3>
-                    <ChevronDown className="w-5 h-5 text-white/60 group-open:rotate-180 transition-transform" />
+                    <h3 className="font-bold text-lg text-gray-900 dark:text-white">{faq.question}</h3>
+                    <ChevronDown className="w-5 h-5 text-gray-500 dark:text-white/60 group-open:rotate-180 transition-transform" />
                   </summary>
                   <div className="px-6 pb-6">
-                    <p className="text-white/80">{faq.answer}</p>
+                    <p className="text-gray-700 dark:text-white/80">{faq.answer}</p>
                   </div>
                 </details>
               </motion.div>

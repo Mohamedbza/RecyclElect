@@ -115,7 +115,9 @@ export const CheckoutModal = ({
                       <p className="text-sm text-white/60">Qté: {quantity}</p>
                     </div>
                   </div>
-                  <p className="font-bold text-primary-400">{product.price * quantity}$ CAD</p>
+                  <p className="font-bold text-primary-400">
+                    {(typeof product.price === 'string' ? parseFloat(product.price) : product.price) * quantity}$ CAD
+                  </p>
                 </div>
               );
             })}

@@ -1,30 +1,36 @@
 import { motion } from "framer-motion";
 import {
   Heart,
-  Star,
   Check,
   ShoppingCart,
-  CreditCard
+  CreditCard,
+  Info,
+  Calendar,
+  Package
 } from "lucide-react";
+import { useTheme } from "../../contexts/ThemeContext";
 
 export interface Product {
   id: string;
   name: string;
-  brand: string;
-  model: string;
-  price: number;
+  description: string;
+  price: number | string;
   originalPrice?: number;
-  category: 'laptop' | 'part';
-  subcategory?: string;
-  condition: 'excellent' | 'very-good' | 'good';
-  specs: string[];
   images: string[];
-  rating: number;
-  reviews: number;
-  inStock: number;
+  specifications: Array<{ id: string; name: string; value: string }>;
   warranty: string;
-  description?: string;
-  features?: string[];
+  condition: 'excellent' | 'bon' | 'moyen';
+  stock: number;
+  category: string;
+  brand?: string;
+  model?: string;
+  createdAt: Date;
+  imageUrl?: string;
+  specs?: string;
+  productType?: 'laptop' | 'part';
+  avatar?: string;
+  title?: string;
+  quote?: string;
 }
 
 interface ProductCardProps {
@@ -34,7 +40,6 @@ interface ProductCardProps {
   onAddToCart: (productId: string) => void;
   onBuyNow: (productId: string) => void;
   onViewDetails: (product: Product) => void;
-  conditions: Array<{ id: string; name: string; color: string }>;
 }
 
 export const ProductCard = ({
@@ -43,19 +48,51 @@ export const ProductCard = ({
   onToggleFavorite,
   onAddToCart,
   onBuyNow,
-  onViewDetails,
-  conditions
-}: ProductCardProps) => (
+  onViewDetails
+}: ProductCardProps) => {
+  const { theme } = useTheme();
+  
+  // Helper function to get condition color
+  const getConditionColor = (condition: string) => {
+    switch (condition) {
+      case 'excellent':
+        return 'bg-green-500/80 text-white';
+      case 'bon':
+        return 'bg-yellow-500/80 text-white';
+      case 'moyen':
+        return 'bg-orange-500/80 text-white';
+      default:
+        return 'bg-gray-500/80 text-white';
+    }
+  };
+
+  // Helper function to format price
+  const formatPrice = (price: number | string) => {
+    if (typeof price === 'string') return price;
+    return `${price}$ CAD`;
+  };
+
+  // Helper function to calculate discount percentage
+  const getDiscountPercentage = () => {
+    if (!product.originalPrice || typeof product.price === 'string') return null;
+    return Math.round((1 - Number(product.price) / product.originalPrice) * 100);
+  };
+  
+  return (
   <motion.div
     layout
-    className="glass-dark rounded-3xl overflow-hidden border border-white/10 hover:border-primary-400/50 transition-all duration-300 group bg-gradient-to-br from-neutral-800/50 to-neutral-900/50 backdrop-blur-xl h-[580px] flex flex-col cursor-pointer"
+    className={`rounded-3xl overflow-hidden border transition-all duration-300 group backdrop-blur-xl h-auto flex flex-col cursor-pointer ${
+      theme === 'light'
+        ? 'bg-white shadow-lg border-gray-200 hover:border-primary-400/50'
+        : 'glass-dark border-white/10 hover:border-primary-400/50 bg-gradient-to-br from-neutral-800/50 to-neutral-900/50'
+    }`}
     whileHover={{ scale: 1.02 }}
     transition={{ duration: 0.3, ease: "easeOut" }}
     onClick={() => onViewDetails(product)}
   >
     <div className="relative">
       <img
-        src={product.images[0]}
+        src={product.images[0] || product.imageUrl}
         alt={product.name}
         className="w-full h-48 object-cover group-hover:scale-102 transition-transform duration-200"
       />
@@ -77,66 +114,146 @@ export const ProductCard = ({
         </motion.button>
       </div>
       <div className="absolute top-4 left-4">
-        <span className={`px-3 py-1 rounded-full text-xs font-bold backdrop-blur-sm ${
-          conditions.find(c => c.id === product.condition)?.color
-        } bg-black/50`}>
-          {conditions.find(c => c.id === product.condition)?.name}
+        <span className={`px-3 py-1 rounded-full text-xs font-bold backdrop-blur-sm ${getConditionColor(product.condition)}`}>
+          {product.condition === 'excellent' ? 'Excellent' : 
+           product.condition === 'bon' ? 'Bon' : 'Moyen'}
         </span>
       </div>
       {product.originalPrice && (
         <div className="absolute bottom-4 left-4">
           <span className="bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">
-            -{Math.round((1 - product.price / product.originalPrice) * 100)}%
+            -{getDiscountPercentage()}%
           </span>
         </div>
       )}
     </div>
 
     <div className="p-6 flex-1 flex flex-col">
-      <div className="flex items-start justify-between mb-2 h-16">
+      {/* Product Name and Brand */}
+      <div className="flex items-start justify-between mb-3">
         <div className="flex-1">
-          <h3 className="font-bold text-lg group-hover:text-primary-400 transition-colors line-clamp-2 leading-tight">
+          <h3 className={`font-bold text-lg group-hover:text-primary-400 transition-colors line-clamp-2 leading-tight ${
+            theme === 'light' ? 'text-black' : 'text-white'
+          }`}>
             {product.name}
           </h3>
-          <p className="text-white/60 text-sm">{product.brand}</p>
+          {product.brand && (
+            <p className={`text-sm ${
+              theme === 'light' ? 'text-black/70' : 'text-white/60'
+            }`}>
+              <span className="font-semibold">Marque:</span> {product.brand}
+            </p>
+          )}
+          {product.model && (
+            <p className={`text-sm ${
+              theme === 'light' ? 'text-black/70' : 'text-white/60'
+            }`}>
+              <span className="font-semibold">Modèle:</span> {product.model}
+            </p>
+          )}
         </div>
       </div>
 
-      <div className="flex items-center mb-3 h-6">
-        <div className="flex items-center">
-          {[...Array(5)].map((_, i) => (
-            <Star
-              key={i}
-              className={`w-4 h-4 ${i < Math.floor(product.rating) ? 'text-yellow-400' : 'text-white/30'}`}
-              fill="currentColor"
-            />
+      {/* Category */}
+      <div className="mb-3">
+        <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
+          theme === 'light' 
+            ? 'bg-blue-100 text-blue-800' 
+            : 'bg-blue-900/50 text-blue-300'
+        }`}>
+          <Package className="w-3 h-3 mr-1" />
+          {product.category}
+        </span>
+      </div>
+
+      {/* Description */}
+      {product.description && (
+        <div className="mb-3">
+          <p className={`text-sm line-clamp-2 ${
+            theme === 'light' ? 'text-black/70' : 'text-white/70'
+          }`}>
+            {product.description}
+          </p>
+        </div>
+      )}
+
+      {/* Specifications */}
+      {product.specifications && product.specifications.length > 0 && (
+        <div className="space-y-1 mb-4">
+          <h4 className={`text-sm font-semibold mb-2 ${
+            theme === 'light' ? 'text-black' : 'text-white'
+          }`}>
+            <Info className="w-4 h-4 inline mr-1" />
+            Spécifications
+          </h4>
+          {product.specifications.slice(0, 3).map((spec, index) => (
+            <div key={index} className={`flex items-center text-xs ${
+              theme === 'light' ? 'text-black/70' : 'text-white/70'
+            }`}>
+              <Check className="w-3 h-3 text-primary-400 mr-2 flex-shrink-0" />
+              <span className="font-medium">{spec.name}:</span>
+              <span className="ml-1 truncate">{spec.value}</span>
+            </div>
           ))}
+          {product.specifications.length > 3 && (
+            <p className={`text-xs italic ${
+              theme === 'light' ? 'text-black/50' : 'text-white/50'
+            }`}>
+              +{product.specifications.length - 3} autres spécifications...
+            </p>
+          )}
         </div>
-        <span className="text-sm text-white/60 ml-2">({product.reviews})</span>
-      </div>
+      )}
 
-      <div className="space-y-2 mb-4 h-16 overflow-hidden">
-        {product.specs.slice(0, 2).map((spec, index) => (
-          <div key={index} className="flex items-center text-sm text-white/70">
-            <Check className="w-3 h-3 text-primary-400 mr-2 flex-shrink-0" />
-            <span className="truncate">{spec}</span>
-          </div>
-        ))}
-      </div>
-
-      <div className="flex items-center justify-between mb-4 h-14">
+      {/* Price Section */}
+      <div className="flex items-center justify-between mb-4">
         <div className="flex-1">
-          <p className="text-2xl font-bold text-primary-400">{product.price}$ CAD</p>
+          <p className="text-2xl font-bold text-primary-400">
+            {formatPrice(product.price)}
+          </p>
           {product.originalPrice && (
-            <p className="text-sm text-white/50 line-through">{product.originalPrice}$ CAD</p>
+            <p className={`text-sm line-through ${
+              theme === 'light' ? 'text-black/50' : 'text-white/50'
+            }`}>
+              {product.originalPrice}$ CAD
+            </p>
           )}
         </div>
         <div className="text-right">
-          <p className="text-sm text-white/60">Stock: {product.inStock}</p>
-          <p className="text-xs text-white/50">Garantie {product.warranty}</p>
+          <p className={`text-sm ${
+            theme === 'light' ? 'text-black/70' : 'text-white/60'
+          }`}>
+            Stock: {product.stock}
+          </p>
+          <p className={`text-xs ${
+            theme === 'light' ? 'text-black/50' : 'text-white/50'
+          }`}>
+            Garantie {product.warranty}
+          </p>
         </div>
       </div>
 
+      {/* Additional Info */}
+      <div className="mb-4 space-y-1">
+        {product.createdAt && (
+          <div className={`flex items-center text-xs ${
+            theme === 'light' ? 'text-black/50' : 'text-white/50'
+          }`}>
+            <Calendar className="w-3 h-3 mr-1" />
+            Ajouté le {product.createdAt.toLocaleDateString('fr-CA')}
+          </div>
+        )}
+        {product.productType && (
+          <div className={`flex items-center text-xs ${
+            theme === 'light' ? 'text-black/50' : 'text-white/50'
+          }`}>
+            <Package className="w-3 h-3 mr-1" />
+            Type: {product.productType === 'laptop' ? 'Ordinateur portable' : 'Pièce'}
+          </div>
+        )}
+      </div>
+
+      {/* Action Buttons */}
       <div className="flex gap-2 mt-auto">
         <motion.button
           whileHover={{ scale: 1.05 }}
@@ -165,4 +282,5 @@ export const ProductCard = ({
       </div>
     </div>
   </motion.div>
-);
+  );
+};

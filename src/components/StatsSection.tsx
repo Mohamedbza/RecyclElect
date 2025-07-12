@@ -202,9 +202,9 @@ export const StatsSection = () => {
           className="text-center mb-20"
         >
           <div className="inline-flex items-center justify-center mb-6">
-            <div className="flex items-center space-x-2 glass rounded-full px-6 py-3 border border-white/10">
-              <Zap className="w-5 h-5 text-primary-400" />
-              <span className="text-sm font-semibold text-white/80">Nos performances</span>
+            <div className="flex items-center space-x-2 bg-white rounded-full px-6 py-3 border border-white/10">
+              <Zap className="w-5 h-5 text-black" />
+              <span className="text-sm font-semibold text-black/80">Nos performances</span>
             </div>
           </div>
           
@@ -214,7 +214,7 @@ export const StatsSection = () => {
             <span className="text-gradient font-neon">parlent d'eux-mêmes</span>
           </h2>
           
-          <p className="text-xl text-white/60 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed">
             Notre engagement envers l'excellence se reflète dans chaque métrique. 
             Découvrez pourquoi des milliers de clients nous font confiance.
           </p>
@@ -241,10 +241,10 @@ export const StatsSection = () => {
           transition={{ delay: 1, duration: 0.8 }}
           className="mt-20 text-center"
         >
-          <div className="flex items-center justify-center space-x-8 text-white/40">
+          <div className="flex items-center justify-center space-x-8 text-white">
             <div className="flex items-center space-x-2">
-              <Users className="w-5 h-5" />
-              <span className="text-sm font-medium">10,000+ clients satisfaits</span>
+              <Users className="w-5 h-5 text-white" />
+              <span className="text-sm font-medium ">10,000+ clients satisfaits</span>
             </div>
             <div className="w-1 h-1 bg-white/20 rounded-full" />
             <div className="flex items-center space-x-2">

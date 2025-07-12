@@ -14,10 +14,10 @@ export const NewsletterSection = () => {
           <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl mb-6">
             <Sparkles className="w-8 h-8 text-white" />
           </div>
-          <h3 className="text-3xl font-display font-bold mb-4">
+          <h3 className="text-3xl font-display font-bold mb-4 text-white">
             Restez informé des <span className="text-gradient font-neon">nouveautés</span>
           </h3>
-          <p className="text-lg text-white/70 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-white mb-8 max-w-2xl mx-auto">
             Recevez en avant-première nos meilleures offres et actualités tech
           </p>
           <form onSubmit={(e) => e.preventDefault()} className="max-w-md mx-auto">

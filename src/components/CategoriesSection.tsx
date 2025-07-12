@@ -32,7 +32,7 @@ export const CategoriesSection = () => {
             <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
               Pour tous les <span className="text-gradient font-neon">besoins</span>
             </h2>
-            <p className="text-lg text-white/70 mb-8">
+            <p className="text-lg text-black/70 mb-8">
               Explorez nos catégories pour trouver exactement ce que vous cherchez, des ordinateurs portables puissants aux accessoires essentiels.
             </p>
             <Link to="/j-achete" className="btn-secondary">
@@ -53,7 +53,7 @@ export const CategoriesSection = () => {
                 <cat.icon className={`w-10 h-10 ${cat.color}`} />
                 <div>
                   <p className="text-lg font-bold">{cat.name}</p>
-                  <p className="text-sm text-white/60">{cat.count} produits</p>
+                  <p className="text-sm text-black/70">{cat.count} produits</p>
                 </div>
               </motion.div>
             ))}

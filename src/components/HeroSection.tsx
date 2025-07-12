@@ -52,14 +52,14 @@ export const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="inline-flex items-center space-x-2 glass rounded-full px-6 py-3 border border-white/10"
+            className="inline-flex items-center space-x-2  bg-white rounded-full px-6 py-3 border border-white/10 bg-w"
           >
-            <span className="font-medium">N°1 du Reconditionnement au Canada</span>
+            <span className="font-medium ">N°1 du Reconditionnement au Canada</span>
           </motion.div>
 
           {/* Main title */}
           <motion.h1 
-            className="text-5xl md:text-7xl font-display font-bold leading-tight"
+            className="text-5xl md:text-7xl font-display font-bold leading-tight text-white"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
@@ -73,7 +73,7 @@ export const HeroSection = () => {
 
           {/* Subtitle */}
           <motion.p 
-            className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl md:text-2xl text-white max-w-3xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
@@ -101,7 +101,7 @@ export const HeroSection = () => {
 
           {/* Trust indicators */}
           <motion.div
-            className="flex flex-wrap items-center justify-center gap-8 mt-16 text-white/60"
+            className="flex flex-wrap items-center justify-center gap-8 mt-16 text-white"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1 }}
