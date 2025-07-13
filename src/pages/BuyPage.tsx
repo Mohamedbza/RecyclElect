@@ -11,8 +11,7 @@ import {
   ShoppingCart,
   Search,
   Filter,
-  Grid3X3,
-  List,
+  Grid3X3, 
   Plus,
   Minus,
   X,
@@ -648,9 +647,9 @@ export const BuyPage = () => {
                   <h3 className={`text-xl font-bold ${theme === 'light' ? 'text-gray-900' : 'text-white'}`}>Filtres</h3>
                   <button
                     onClick={() => setShowFilters(!showFilters)}
-                    className={`lg:hidden ${theme === 'light' ? 'btn-primary' : 'btn-secondary'}`}
+                    className={`p-2 rounded-lg lg:hidden ${theme === 'light' ? 'btn-primary' : 'btn-secondary'}`}
                   >
-                    <Filter className="w-4 h-4" />
+                    <Filter className="w-8 h-8 text-white" />
                   </button>
                 </div>
 
@@ -786,19 +785,7 @@ export const BuyPage = () => {
                       }`}
                     >
                       <Grid3X3 className="w-4 h-4" />
-                    </button>
-                    <button
-                      onClick={() => setViewMode('list')}
-                      className={`p-2 rounded-lg ${
-                        viewMode === 'list' 
-                          ? 'bg-primary-500 text-white' 
-                          : theme === 'light' 
-                            ? 'bg-gray-100 text-gray-600 hover:bg-gray-200' 
-                            : 'bg-white/10 text-white'
-                      }`}
-                    >
-                      <List className="w-4 h-4" />
-                    </button>
+                    </button> 
                   </div>
                 </div>
 
@@ -911,36 +898,42 @@ export const BuyPage = () => {
                         if (!product) return null;
                         
                         return (
-                          <div key={productId} className="flex items-center space-x-4 p-4 glass-dark rounded-2xl">
-                            <img
-                              src={product.images[0]}
-                              alt={product.name}
-                              className="w-20 h-20 object-cover rounded-xl"
-                            />
-                            <div className="flex-1">
-                              <h4 className="font-bold">{product.name}</h4>
-                              <p className="text-white/60 text-sm">{product.brand}</p>
-                              <p className="text-primary-400 font-bold">
-                                {(typeof product.price === 'string' ? parseFloat(product.price) : product.price)}$ CAD
-                              </p>
+                          <div key={productId} className="p-4 glass-dark rounded-2xl">
+                            <div className="flex items-center space-x-4 mb-3">
+                              <img
+                                src={product.images[0]}
+                                alt={product.name}
+                                className="w-20 h-20 object-cover rounded-xl"
+                              />
+                              <div className="flex-1 flex items-center justify-between">
+                                <div>
+                                  <h4 className="font-bold">{product.name}</h4>
+                                  <p className="text-white/60 text-sm">{product.brand}</p>
+                                </div>
+                                <p className="text-primary-400 font-bold text-lg">
+                                  {(typeof product.price === 'string' ? parseFloat(product.price) : product.price)}$ CAD
+                                </p>
+                              </div>
                             </div>
-                            <div className="flex items-center space-x-3">
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center space-x-3">
+                                <button
+                                  onClick={() => removeFromCart(productId)}
+                                  className="p-2 hover:bg-white/10 rounded-full transition-colors"
+                                >
+                                  <Minus className="w-4 h-4" />
+                                </button>
+                                <span className="w-8 text-center font-bold">{quantity}</span>
+                                <button
+                                  onClick={() => addToCart(productId)}
+                                  className="p-2 hover:bg-white/10 rounded-full transition-colors"
+                                >
+                                  <Plus className="w-4 h-4" />
+                                </button>
+                              </div>
                               <button
                                 onClick={() => removeFromCart(productId)}
-                                className="p-1 hover:bg-white/10 rounded-full"
-                              >
-                                <Minus className="w-4 h-4" />
-                              </button>
-                              <span className="w-8 text-center font-bold">{quantity}</span>
-                              <button
-                                onClick={() => addToCart(productId)}
-                                className="p-1 hover:bg-white/10 rounded-full"
-                              >
-                                <Plus className="w-4 h-4" />
-                              </button>
-                              <button
-                                onClick={() => removeFromCart(productId)}
-                                className="p-2 hover:bg-red-500/20 text-red-400 rounded-full ml-2"
+                                className="p-2 hover:bg-red-500/20 text-red-400 rounded-full transition-colors"
                               >
                                 <Trash2 className="w-4 h-4" />
                               </button>
@@ -968,10 +961,10 @@ export const BuyPage = () => {
                             setShowCart(false);
                             setShowCheckout(true);
                           }}
-                          className="flex-1 btn-primary py-3 rounded-xl font-semibold flex items-center justify-center"
+                          className="flex-1 btn-primary p-3 rounded-xl font-semibold flex items-center justify-center text-white"
                         >
                           <CreditCard className="w-5 h-5 mr-2" />
-                          Passer commande
+                          Passer la commande
                         </button>
                       </div>
                     </div>
@@ -1078,10 +1071,10 @@ export const BuyPage = () => {
                         <Link
                           to="/favoris"
                           onClick={() => setShowFavoritesModal(false)}
-                          className="flex-1 btn-primary py-3 rounded-xl font-semibold flex items-center justify-center"
+                          className="flex-1 btn-primary p-3 rounded-xl font-semibold flex items-center justify-center"
                         >
                           <Heart className="w-5 h-5 mr-2" />
-                          Voir tous les favoris
+                          Voir tous mes favoris
                         </Link>
                       </div>
                     </div>
@@ -1126,7 +1119,7 @@ export const BuyPage = () => {
         <motion.button
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
-          className="fixed bottom-6 right-6 bg-primary-500 hover:bg-primary-600 text-white p-4 rounded-full shadow-2xl z-40"
+          className="fixed bottom-4 right-6 bg-primary-500 hover:bg-primary-600 text-white p-4 rounded-full shadow-2xl z-40"
           onClick={() => setShowCart(true)}
         >
           <ShoppingCart className="w-6 h-6" />

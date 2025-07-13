@@ -255,7 +255,7 @@ export const ProductCard = ({
             e.stopPropagation();
             onAddToCart(product.id);
           }}
-          className="flex-1 btn-secondary text-white py-3 px-4 rounded-xl flex items-center justify-center font-semibold"
+          className="flex-1 btn-secondary text-gray-600 py-3 px-4 rounded-xl flex items-center justify-center font-semibold"
         >
           <ShoppingCart className="w-4 h-4 mr-2" />
           Panier
