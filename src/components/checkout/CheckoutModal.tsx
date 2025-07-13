@@ -581,7 +581,7 @@ export const CheckoutModal = ({
                     >
                       <div className="flex items-center space-x-3 sm:space-x-4">
                         <div className="p-2 sm:p-3 bg-purple-100 rounded-full">
-                          <Gift className="w-5 h-5 sm:w-6 sm:h-6 text-purple-600" />
+                          <Package className="w-5 h-5 sm:w-6 sm:h-6 text-purple-600" />
                         </div>
                         <div>
                           <h3 className="font-bold text-base sm:text-lg text-gray-900">Offre spéciale !</h3>
