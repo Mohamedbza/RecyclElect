@@ -203,7 +203,7 @@ export const CheckoutModal = ({
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      maxWidth="6xl"
+      maxWidth="4xl"
       showHeader={false}
       className="p-8"
     >
