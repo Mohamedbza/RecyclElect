@@ -351,6 +351,11 @@ const conditions = [
   { id: 'good', name: 'Bon', color: 'text-yellow-400' }
 ];
 
+const getProductPrice = (product: Product | undefined): number => {
+  if (!product) return 0;
+  return typeof product.price === 'string' ? parseFloat(product.price) : product.price;
+};
+
 export const BuyPage = () => {
   const { theme } = useTheme();
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -367,6 +372,7 @@ export const BuyPage = () => {
   const [showCheckout, setShowCheckout] = useState(false);
   const [selectedModel, setSelectedModel] = useState<string>('');
   const [selectedDeliveryMethod, setSelectedDeliveryMethod] = useState<string>('standard');
+  const [directPurchaseItem, setDirectPurchaseItem] = useState<string | null>(null);
 
   const filterRef = useRef<HTMLDivElement>(null);
 
@@ -427,8 +433,7 @@ export const BuyPage = () => {
   };
 
   const buyNow = (productId: string) => {
-    addItem(productId);
-    toast.success(`${mockProducts.find(p => p.id === productId)?.name} ajouté au panier !`);
+    setDirectPurchaseItem(productId);
     setShowCheckout(true);
   };
 
@@ -1090,14 +1095,34 @@ export const BuyPage = () => {
       <AnimatePresence>
         <CheckoutModal
           isOpen={showCheckout}
-          onClose={() => setShowCheckout(false)}
-          cartItems={cart}
+          onClose={() => {
+            setShowCheckout(false);
+            setDirectPurchaseItem(null);
+          }}
+          cartItems={directPurchaseItem ? { [directPurchaseItem]: 1 } : cart}
           products={mockProducts}
           selectedDeliveryMethod={selectedDeliveryMethod}
           onDeliveryMethodChange={setSelectedDeliveryMethod}
-          getTotalPrice={() => getTotalPrice(mockProducts)}
+          getTotalPrice={() => {
+            if (directPurchaseItem) {
+              const product = mockProducts.find(p => p.id === directPurchaseItem);
+              return getProductPrice(product);
+            }
+            return getTotalPrice(mockProducts);
+          }}
           getDeliveryPrice={getDeliveryPrice}
-          getFinalTotal={getFinalTotal}
+          getFinalTotal={() => {
+            if (directPurchaseItem) {
+              const product = mockProducts.find(p => p.id === directPurchaseItem);
+              const productPrice = getProductPrice(product);
+              return productPrice + getDeliveryPrice();
+            }
+            return getFinalTotal();
+          }}
+          onSubmit={() => {
+            setShowCheckout(false);
+            setDirectPurchaseItem(null);
+          }}
         />
       </AnimatePresence>
 
