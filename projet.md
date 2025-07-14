@@ -3,7 +3,7 @@ Plan du Projet
 RecyclElect est une entreprise en démarrage. Nous faisons dans la commercialisation des
 matériels électroniques d’occasion. Présentement, nous nous sommes spécialisés dans la
 commercialisation des ordinateurs portables d’occasion, et la majorité de nos ventes passent par
-Facebook market. Le projet "ITech" est conçu pour augmenter notre visibilité en ligne, oﬀrir une
+Facebook market. Le projet "GoodPc" est conçu pour augmenter notre visibilité en ligne, oﬀrir une
 plateforme conviviale pour l'achat de pièces électroniques d'occasion chez « RecyclElect », et
 promouvoir la durabilité de nos opérations. La stratégie marketing digitale doit inclure une
 optimisation SEO, un contenu engageant, et une présence active sur les réseaux sociaux, tout en
@@ -37,7 +37,7 @@ compétitifs.
 • Promouvoir la durabilité en donnant une seconde vie aux pièces électroniques.
 • Collecter les avis des utilisateurs
 • Conception du site web :
-• Inspiré par le modèle de sites comme "oscaro.opisto.fr", le site "ITech" doit être
+• Inspiré par le modèle de sites comme "oscaro.opisto.fr", le site "GoodPc" doit être
 intuitif et facile à naviguer.
 • Intégrer des fonctionnalités de recherche avancée pour permettre aux
 utilisateurs de trouver rapidement les pièces dont ils ont besoin.
@@ -58,7 +58,7 @@ SEO.
 • Créer des backlinks de qualité pour augmenter l'autorité du site.
 • Marketing sur les réseaux sociaux (ceci vient au cas où votre compagnie oﬀre des
 services de marketing digital) :
-• Promouvoir le site "ITech" sur des plateformes comme Facebook, Instagram, et
+• Promouvoir le site "GoodPc" sur des plateformes comme Facebook, Instagram, et
 LinkedIn pour atteindre un public plus large.
 • Utiliser des campagnes publicitaires ciblées pour attirer des dépanneurs et des
 consommateurs intéressés par les pièces d'occasion.

@@ -94,7 +94,7 @@ export const Header = () => {
             <Link to="/" className="flex items-center">
               <img
                 src={assets.logo}
-                alt="itech"
+                alt="GoodPc"
                 className="w-28 h-28 object-contain"
               />
             </Link>
